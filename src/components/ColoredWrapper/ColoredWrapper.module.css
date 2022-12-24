@@ -1,0 +1,43 @@
+.container {
+  transition: all 500ms ease;
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.bg-red {
+  background-color: var(--red);
+}
+
+.bg-orange-hover:hover {
+  background-color: var(--orange-dark);
+}
+
+.bg-green-hover:hover {
+  background-color: var(--green-dark);
+}
+
+.bg-yellow-hover:hover {
+  background-color: var(--yellow-dark);
+}
+
+.bg-blue-hover:hover {
+  background-color: var(--blue-dark);
+}
+
+.bg-red-hover:hover {
+  background-color: var(--red-dark);
+}

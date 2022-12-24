@@ -1,0 +1,28 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+
+  font-family: "Montserrat", sans-serif;
+
+  background-position: top center;
+  background-size: cover;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --orange: #ffeccb;
+  --green: #d6ffef;
+  --yellow: #fafada;
+  --blue: #d1f4f6;
+  --red: #ffe0e5;
+
+  --orange-dark: #fde2b4;
+  --green-dark: #b7fce1;
+  --yellow-dark: #fafabe;
+  --blue-dark: #baf4f7;
+  --red-dark: #fcc1cb;
+}
