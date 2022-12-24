@@ -42,8 +42,11 @@ const StartPage = (): JSX.Element => {
           imageAlt="Pets in house."
           className={styles["left-side-image"]}
         />
-        <HTag tag="h2">My pets</HTag>
+        <HTag tag="h2" className={styles["left-side-text"]}>
+          My pets
+        </HTag>
       </ColoredWrapper>
+
       <ColoredWrapper
         onClick={onRightSideClick}
         bg="green"
@@ -53,9 +56,11 @@ const StartPage = (): JSX.Element => {
         <Image
           imageUrl={petsIcon02}
           imageAlt="Pets' list."
-          className={styles["left-right-image"]}
+          className={styles["right-side-image"]}
         />
-        <HTag tag="h2">Add pet</HTag>
+        <HTag tag="h2" className={styles["right-side-text"]}>
+          Add pet
+        </HTag>
       </ColoredWrapper>
     </motion.div>
   );

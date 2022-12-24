@@ -24,7 +24,7 @@
 }
 
 .left-side-image,
-.left-right-image {
+.right-side-image {
   width: 256px;
   height: 256px;
 
@@ -32,7 +32,19 @@
 }
 
 .left-side:hover .left-side-image,
-.right-side:hover .left-right-image {
+.right-side:hover .right-side-image {
   width: 300px;
   height: 300px;
+}
+
+.left-side-text,
+.right-side-text {
+  opacity: 0;
+  transition: all 1000ms ease;
+}
+
+.left-side:hover .left-side-text,
+.right-side:hover .right-side-text {
+  opacity: 1;
+  transition: all 500ms ease;
 }

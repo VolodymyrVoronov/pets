@@ -5,6 +5,10 @@ import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import NavBar from "../../components/NavBar/NavBar";
+import Button from "../../components/Button/Button";
+import Image from "../../components/Image/Image";
+
+import arrowBack from "../../assets/icon/arrow-back-outline.svg";
 
 import styles from "./PetsPage.module.css";
 
@@ -23,8 +27,12 @@ const PetsPage = (): JSX.Element => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <NavBar>test</NavBar>
-      <ColoredWrapper bg="blue" isHovering className={styles.container}>
+      <NavBar>
+        <Button onClick={onBackButtonClick} className={styles["back-button"]}>
+          <Image imageUrl={arrowBack} imageAlt="Arrow back" />
+        </Button>
+      </NavBar>
+      <ColoredWrapper bg="blue" className={styles.container}>
         test
       </ColoredWrapper>
     </motion.div>
