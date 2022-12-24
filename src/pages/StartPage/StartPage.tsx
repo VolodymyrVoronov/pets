@@ -1,12 +1,11 @@
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import Image from "../../components/Image/Image";
 import HTag from "../../components/HTag/HTag";
-import NavBar from "../../components/NavBar/NavBar";
 
 import petsIcon01 from "../../assets/images/pets-icon-01.png";
 import petsIcon02 from "../../assets/images/pets-icon-02.png";

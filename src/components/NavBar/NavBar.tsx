@@ -1,7 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
-import ReactDOM from "react-dom";
-import cn from "classnames";
 import { motion } from "framer-motion";
+import cn from "classnames";
 
 import styles from "./NavBar.module.css";
 
@@ -15,20 +14,17 @@ const NavBar = ({
   children,
   ...props
 }: INavBarProps): JSX.Element => {
-  const portalContainer = document.getElementById("nav-bar") as HTMLElement;
-
-  return ReactDOM.createPortal(
+  return (
     <motion.div
-      initial={{ x: "-100px" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100px" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 2 }}
     >
       <div className={cn(styles.container, className)} {...props}>
         {children}
       </div>
-    </motion.div>,
-    portalContainer
+    </motion.div>
   );
 };
 
