@@ -14,6 +14,10 @@ const App: FC = (): ReactElement => {
       <Routes key={location.pathname} location={location}>
         <Route path={Paths.Root} element={<Navigate to={Paths.StartPage} />} />
         <Route path={Paths.StartPage} element={<StartPage />} />
+        <Route path={Paths.PetsPage} element={<div>PetsPage</div>} />
+        <Route path={Paths.PetPageInfo} element={<div>PetPageInfo</div>} />
+        <Route path={Paths.AddPetPage} element={<div>AddPetPage</div>} />
+        <Route path={Paths.NoPage} element={<div>NoPage</div>} />
       </Routes>
     </AnimatePresence>
   );

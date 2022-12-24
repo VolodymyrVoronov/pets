@@ -1,13 +1,22 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-import styles from "./StartPage.module.css";
+import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 
+import styles from "./StartPage.module.css";
+
 const StartPage: FC = (): JSX.Element => {
-  const onLeftButtonClick = (): void => {};
-  const onRightButtonClick = (): void => {};
+  const navigator = useNavigate();
+
+  const onLeftSideClick = (): void => {
+    navigator(Paths.PetsPage, { replace: true });
+  };
+  const onRightSideClick = (): void => {
+    navigator(Paths.AddPetPage, { replace: true });
+  };
 
   return (
     <motion.div
@@ -17,10 +26,20 @@ const StartPage: FC = (): JSX.Element => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <ColoredWrapper bg="blue" isHovering className={styles["left-side"]}>
+      <ColoredWrapper
+        onClick={onLeftSideClick}
+        bg="blue"
+        isHovering
+        className={styles["left-side"]}
+      >
         Left Side
       </ColoredWrapper>
-      <ColoredWrapper bg="red" isHovering className={styles["right-side"]}>
+      <ColoredWrapper
+        onClick={onRightSideClick}
+        bg="red"
+        isHovering
+        className={styles["right-side"]}
+      >
         Right Side
       </ColoredWrapper>
     </motion.div>
