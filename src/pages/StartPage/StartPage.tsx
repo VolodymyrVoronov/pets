@@ -5,9 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
+import Image from "../../components/Image/Image";
+
+import petsIcon01 from "../../assets/images/pets-icon-01.png";
+import petsIcon02 from "../../assets/images/pets-icon-02.png";
 
 import styles from "./StartPage.module.css";
-import Image from "../../components/Image/Image";
 
 const StartPage: FC = (): JSX.Element => {
   const navigator = useNavigate();
@@ -34,8 +37,8 @@ const StartPage: FC = (): JSX.Element => {
         className={styles["left-side"]}
       >
         <Image
-          imageUrl="2"
-          imageAlt="2"
+          imageUrl={petsIcon01}
+          imageAlt="Pets in house."
           className={styles["left-side-image"]}
         />
       </ColoredWrapper>
@@ -46,8 +49,8 @@ const StartPage: FC = (): JSX.Element => {
         className={styles["right-side"]}
       >
         <Image
-          imageUrl="2"
-          imageAlt="2"
+          imageUrl={petsIcon02}
+          imageAlt="Pets' list."
           className={styles["left-right-image"]}
         />
       </ColoredWrapper>
