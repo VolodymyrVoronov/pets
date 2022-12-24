@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Paths from "../../constants";
 
@@ -8,7 +8,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Image from "../../components/Image/Image";
 
-import arrowBack from "../../assets/icon/arrow-back-outline.svg";
+import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
 
 import styles from "./PetsPage.module.css";
 
@@ -29,7 +29,7 @@ const PetsPage = (): JSX.Element => {
     >
       <NavBar>
         <Button onClick={onBackButtonClick} className={styles["back-button"]}>
-          <Image imageUrl={arrowBack} imageAlt="Arrow back" />
+          <Image imageUrl={arrowBackIcon} imageAlt="Arrow back" />
         </Button>
       </NavBar>
       <ColoredWrapper bg="blue" className={styles.container}>
