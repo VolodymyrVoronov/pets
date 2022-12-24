@@ -6,6 +6,7 @@ import Paths from "../../constants";
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import Image from "../../components/Image/Image";
 import HTag from "../../components/HTag/HTag";
+import Button from "../../components/Button/Button";
 
 import petsIcon01 from "../../assets/images/pets-icon-01.png";
 import petsIcon02 from "../../assets/images/pets-icon-02.png";
@@ -31,37 +32,39 @@ const StartPage = (): JSX.Element => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <ColoredWrapper
-        onClick={onLeftSideClick}
-        bg="blue"
-        isHovering
-        className={styles["left-side"]}
-      >
-        <Image
-          imageUrl={petsIcon01}
-          imageAlt="Pets in house."
-          className={styles["left-side-image"]}
-        />
-        <HTag tag="h2" className={styles["left-side-text"]}>
-          My pets
-        </HTag>
-      </ColoredWrapper>
+      <Button onClick={onLeftSideClick} className={styles["left-side"]}>
+        <ColoredWrapper
+          bg="blue"
+          isHovering
+          className={styles["left-side-wrapper"]}
+        >
+          <Image
+            imageUrl={petsIcon01}
+            imageAlt="Pets in house."
+            className={styles["left-side-image"]}
+          />
+          <HTag tag="h2" className={styles["left-side-text"]}>
+            My pets
+          </HTag>
+        </ColoredWrapper>
+      </Button>
 
-      <ColoredWrapper
-        onClick={onRightSideClick}
-        bg="green"
-        isHovering
-        className={styles["right-side"]}
-      >
-        <Image
-          imageUrl={petsIcon02}
-          imageAlt="Pets' list."
-          className={styles["right-side-image"]}
-        />
-        <HTag tag="h2" className={styles["right-side-text"]}>
-          Add pet
-        </HTag>
-      </ColoredWrapper>
+      <Button onClick={onRightSideClick} className={styles["right-side"]}>
+        <ColoredWrapper
+          bg="green"
+          isHovering
+          className={styles["right-side-wrapper"]}
+        >
+          <Image
+            imageUrl={petsIcon02}
+            imageAlt="Pets' list."
+            className={styles["right-side-image"]}
+          />
+          <HTag tag="h2" className={styles["right-side-text"]}>
+            Add pet
+          </HTag>
+        </ColoredWrapper>
+      </Button>
     </motion.div>
   );
 };
