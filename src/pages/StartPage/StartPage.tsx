@@ -7,6 +7,7 @@ import Paths from "../../constants";
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 
 import styles from "./StartPage.module.css";
+import Image from "../../components/Image/Image";
 
 const StartPage: FC = (): JSX.Element => {
   const navigator = useNavigate();
@@ -32,15 +33,23 @@ const StartPage: FC = (): JSX.Element => {
         isHovering
         className={styles["left-side"]}
       >
-        Left Side
+        <Image
+          imageUrl="2"
+          imageAlt="2"
+          className={styles["left-side-image"]}
+        />
       </ColoredWrapper>
       <ColoredWrapper
         onClick={onRightSideClick}
-        bg="red"
+        bg="green"
         isHovering
         className={styles["right-side"]}
       >
-        Right Side
+        <Image
+          imageUrl="2"
+          imageAlt="2"
+          className={styles["left-right-image"]}
+        />
       </ColoredWrapper>
     </motion.div>
   );

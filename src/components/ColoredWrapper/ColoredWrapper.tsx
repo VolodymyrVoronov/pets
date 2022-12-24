@@ -1,12 +1,13 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 import cn from "classnames";
 
 import styles from "./ColoredWrapper.module.css";
 
-export interface IColoredWrapper
+interface IColoredWrapperProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   bg: "orange" | "green" | "yellow" | "blue" | "red";
   isHovering?: boolean;
+  children?: ReactNode;
 }
 
 const ColoredWrapper = ({
@@ -15,12 +16,12 @@ const ColoredWrapper = ({
   className,
   children,
   ...props
-}: IColoredWrapper): JSX.Element => {
+}: IColoredWrapperProps): JSX.Element => {
   return (
     <div
       className={cn(
         [styles.container, styles[`bg-${bg}`]],
-        styles[`bg-${bg}-${isHovering && "hover"}`],
+        [isHovering && styles[`bg-${bg}-hover`]],
         className
       )}
       {...props}
