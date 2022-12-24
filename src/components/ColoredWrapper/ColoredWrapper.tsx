@@ -31,4 +31,6 @@ const ColoredWrapper = ({
   );
 };
 
+ColoredWrapper.displayName = "ColoredWrapper";
+
 export default ColoredWrapper;

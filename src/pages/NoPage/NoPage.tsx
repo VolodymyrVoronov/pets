@@ -49,4 +49,6 @@ const NoPage = (): JSX.Element => {
   );
 };
 
+NoPage.displayName = "NoPage";
+
 export default NoPage;

@@ -69,4 +69,6 @@ const StartPage = (): JSX.Element => {
   );
 };
 
+StartPage.displayName = "StartPage";
+
 export default StartPage;

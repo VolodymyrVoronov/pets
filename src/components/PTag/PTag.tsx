@@ -33,4 +33,6 @@ const PTag = ({
   );
 };
 
+PTag.displayName = "PTag";
+
 export default PTag;

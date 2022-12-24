@@ -39,4 +39,6 @@ const PetsPage = (): JSX.Element => {
   );
 };
 
+PetsPage.displayName = "PetsPage";
+
 export default PetsPage;

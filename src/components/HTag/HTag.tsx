@@ -30,4 +30,6 @@ const HTag = ({
   );
 };
 
+HTag.displayName = "HTag";
+
 export default HTag;

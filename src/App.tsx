@@ -24,4 +24,6 @@ const App = (): JSX.Element => {
   );
 };
 
+App.displayName = "App";
+
 export default App;
