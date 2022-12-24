@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -13,12 +12,13 @@ import petsIcon02 from "../../assets/images/pets-icon-02.png";
 
 import styles from "./StartPage.module.css";
 
-const StartPage: FC = (): JSX.Element => {
+const StartPage = (): JSX.Element => {
   const navigator = useNavigate();
 
   const onLeftSideClick = (): void => {
     navigator(Paths.PetsPage, { replace: true });
   };
+
   const onRightSideClick = (): void => {
     navigator(Paths.AddPetPage, { replace: true });
   };

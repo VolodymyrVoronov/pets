@@ -1,12 +1,12 @@
-import { FC, ReactElement } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Paths from "./constants";
 
 import StartPage from "./pages/StartPage/StartPage";
+import NoPage from "./pages/NoPage/NoPage";
 
-const App: FC = (): ReactElement => {
+const App = (): JSX.Element => {
   const location = useLocation();
 
   return (
@@ -17,7 +17,7 @@ const App: FC = (): ReactElement => {
         <Route path={Paths.PetsPage} element={<div>PetsPage</div>} />
         <Route path={Paths.PetPageInfo} element={<div>PetPageInfo</div>} />
         <Route path={Paths.AddPetPage} element={<div>AddPetPage</div>} />
-        <Route path={Paths.NoPage} element={<div>NoPage</div>} />
+        <Route path={Paths.NoPage} element={<NoPage />} />
       </Routes>
     </AnimatePresence>
   );
