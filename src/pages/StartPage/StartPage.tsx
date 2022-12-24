@@ -6,6 +6,7 @@ import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import Image from "../../components/Image/Image";
+import HTag from "../../components/HTag/HTag";
 
 import petsIcon01 from "../../assets/images/pets-icon-01.png";
 import petsIcon02 from "../../assets/images/pets-icon-02.png";
@@ -41,6 +42,7 @@ const StartPage: FC = (): JSX.Element => {
           imageAlt="Pets in house."
           className={styles["left-side-image"]}
         />
+        <HTag tag="h2">My pets</HTag>
       </ColoredWrapper>
       <ColoredWrapper
         onClick={onRightSideClick}
@@ -53,6 +55,7 @@ const StartPage: FC = (): JSX.Element => {
           imageAlt="Pets' list."
           className={styles["left-right-image"]}
         />
+        <HTag tag="h2">Add pet</HTag>
       </ColoredWrapper>
     </motion.div>
   );

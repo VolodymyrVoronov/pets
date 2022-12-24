@@ -1,0 +1,23 @@
+.hTag {
+  font-weight: 400;
+}
+
+.h1 {
+  font-size: 70px;
+  line-height: 75px;
+}
+
+.h2 {
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.h3 {
+  font-size: 35px;
+  line-height: 42px;
+}
+
+.h4 {
+  font-size: 26px;
+  line-height: 36px;
+}
