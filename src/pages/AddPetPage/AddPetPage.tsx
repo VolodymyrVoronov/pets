@@ -7,7 +7,7 @@ import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Image from "../../components/Image/Image";
-import ImageCropper from "../../components/ImageCropper/ImageCropper";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
 
 import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
 import saveIcon from "../../assets/icon/save-outline.svg";
@@ -52,7 +52,7 @@ const AddPetPage = (): JSX.Element => {
           bg="yellow"
           className={styles["colored-wrapper-upload-image"]}
         >
-          <ImageCropper />
+          <ImageUpload />
         </ColoredWrapper>
 
         <ColoredWrapper bg="green" className={styles["colored-wrapper"]}>
