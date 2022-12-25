@@ -6,6 +6,7 @@ import Paths from "./constants";
 import StartPage from "./pages/StartPage/StartPage";
 import NoPage from "./pages/NoPage/NoPage";
 import PetsPage from "./pages/PetsPage/PetsPage";
+import AddPetPage from "./pages/AddPetPage/AddPetPage";
 
 const App = (): JSX.Element => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const App = (): JSX.Element => {
         <Route path={Paths.StartPage} element={<StartPage />} />
         <Route path={Paths.PetsPage} element={<PetsPage />} />
         <Route path={Paths.PetPageInfo} element={<div>PetPageInfo</div>} />
-        <Route path={Paths.AddPetPage} element={<div>AddPetPage</div>} />
+        <Route path={Paths.AddPetPage} element={<AddPetPage />} />
         <Route path={Paths.NoPage} element={<NoPage />} />
       </Routes>
     </AnimatePresence>

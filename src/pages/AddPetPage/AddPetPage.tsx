@@ -9,15 +9,18 @@ import Button from "../../components/Button/Button";
 import Image from "../../components/Image/Image";
 
 import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
+import saveIcon from "../../assets/icon/save-outline.svg";
 
-import styles from "./PetsPage.module.css";
+import styles from "./AddPetPage.module.css";
 
-const PetsPage = (): JSX.Element => {
+const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
 
   const onBackButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
   };
+
+  const onSaveButtonClick = (): void => {};
 
   return (
     <motion.div
@@ -29,16 +32,27 @@ const PetsPage = (): JSX.Element => {
     >
       <NavBar>
         <Button onClick={onBackButtonClick} className={styles["back-button"]}>
-          <Image imageUrl={arrowBackIcon} imageAlt="Arrow back" />
+          <Image imageUrl={arrowBackIcon} imageAlt="Arrow back icon" />
+        </Button>
+        <Button onClick={onSaveButtonClick} className={styles["save-button"]}>
+          <Image imageUrl={saveIcon} imageAlt="Save icon" />
         </Button>
       </NavBar>
-      <ColoredWrapper bg="blue" className={styles.container}>
-        test
-      </ColoredWrapper>
+      <div className={styles.container}>
+        <ColoredWrapper bg="yellow" className={styles["colored-wrapper"]}>
+          Foto
+        </ColoredWrapper>
+
+        <ColoredWrapper bg="green" className={styles["colored-wrapper"]}>
+          Name
+        </ColoredWrapper>
+
+        <ColoredWrapper bg="blue" className={styles["colored-wrapper"]}>
+          Info
+        </ColoredWrapper>
+      </div>
     </motion.div>
   );
 };
 
-PetsPage.displayName = "PetsPage";
-
-export default PetsPage;
+export default AddPetPage;
