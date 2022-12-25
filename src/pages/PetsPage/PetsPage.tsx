@@ -28,7 +28,11 @@ const PetsPage = (): JSX.Element => {
       transition={{ duration: 1 }}
     >
       <NavBar>
-        <Button onClick={onBackButtonClick} className={styles["back-button"]}>
+        <Button
+          onClick={onBackButtonClick}
+          className={styles["back-button"]}
+          title="Back to start page."
+        >
           <Image imageUrl={arrowBackIcon} imageAlt="Arrow back" />
         </Button>
       </NavBar>

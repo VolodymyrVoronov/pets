@@ -30,7 +30,11 @@ const NoPage = (): JSX.Element => {
       transition={{ duration: 1 }}
     >
       <NavBar>
-        <Button onClick={onHomeButtonClick} className={styles["back-button"]}>
+        <Button
+          onClick={onHomeButtonClick}
+          className={styles["back-button"]}
+          title="Back to start page."
+        >
           <Image imageUrl={homeIcon} imageAlt="Arrow back" />
         </Button>
       </NavBar>

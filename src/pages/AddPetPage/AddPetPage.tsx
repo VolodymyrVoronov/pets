@@ -31,10 +31,18 @@ const AddPetPage = (): JSX.Element => {
       transition={{ duration: 1 }}
     >
       <NavBar>
-        <Button onClick={onBackButtonClick} className={styles["back-button"]}>
+        <Button
+          onClick={onBackButtonClick}
+          className={styles["back-button"]}
+          title="Back to start page."
+        >
           <Image imageUrl={arrowBackIcon} imageAlt="Arrow back icon" />
         </Button>
-        <Button onClick={onSaveButtonClick} className={styles["save-button"]}>
+        <Button
+          onClick={onSaveButtonClick}
+          className={styles["save-button"]}
+          title="Save pet's data."
+        >
           <Image imageUrl={saveIcon} imageAlt="Save icon" />
         </Button>
       </NavBar>
