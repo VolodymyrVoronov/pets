@@ -23,7 +23,7 @@ const NoPage = (): JSX.Element => {
 
   return (
     <motion.div
-      className={styles.container}
+      className={styles.wrapper}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
