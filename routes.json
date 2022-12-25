@@ -1,0 +1,4 @@
+{
+  "pets/": "pets",
+  "pets/:id": "pets/:id"
+}
