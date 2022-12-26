@@ -15,6 +15,7 @@ import Button from "../Button/Button";
 import placeholder from "../../assets/images/placeholder.jpeg";
 import plusIcon from "../../assets/icon/plus-outline.svg";
 import closeIcon from "../../assets/icon/close-outline.svg";
+import uploadIcon from "../../assets/icon/upload-outline.svg";
 
 import styles from "./ImageUpload.module.css";
 
@@ -81,8 +82,21 @@ const ImageUpload = (): JSX.Element => {
           transition={{ duration: 1 }}
         >
           <div className={styles["preview-header"]}>
-            <input type="file" accept="image/*" onChange={onUploadFile} />
-            <PTag size="l">Preview</PTag>
+            <div className={styles["preview-upload-btn-wrapper"]}>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={onUploadFile}
+                title="Upload file."
+              />
+              <Button
+                type="button"
+                className={styles["preview-upload-btn"]}
+                title="Upload photo button."
+              >
+                <Img imageUrl={uploadIcon} imageAlt="Upload icon." />
+              </Button>
+            </div>
           </div>
           <div className={styles["preview-upload"]}>
             <ImageCropper
@@ -111,6 +125,7 @@ const ImageUpload = (): JSX.Element => {
           </Button>
         </motion.div>
       )}
+
       {!uploadPhoto && (
         <motion.div
           className={styles["photo-container"]}
