@@ -73,8 +73,13 @@ const ImageUpload = (): JSX.Element => {
 
   return (
     <div className={styles.container}>
-      {uploadPhoto ? (
-        <motion.div>
+      {uploadPhoto && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
           <div className={styles["preview-header"]}>
             <input type="file" accept="image/*" onChange={onUploadFile} />
             <PTag size="l">Preview</PTag>
@@ -105,8 +110,15 @@ const ImageUpload = (): JSX.Element => {
             <Img imageUrl={closeIcon} imageAlt="Close icon." />
           </Button>
         </motion.div>
-      ) : (
-        <motion.div className={styles["photo-container"]}>
+      )}
+      {!uploadPhoto && (
+        <motion.div
+          className={styles["photo-container"]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
           <Img
             imageUrl={placeholder}
             imageAlt="Photo"
