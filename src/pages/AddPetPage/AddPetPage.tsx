@@ -8,11 +8,14 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
+import PTag from "../../components/PTag/PTag";
+import Input from "../../components/Input/Input";
 
-import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
-import saveIcon from "../../assets/icon/save-outline.svg";
+import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
+import saveIcon from "../../assets/icons/save-outline.svg";
 
 import styles from "./AddPetPage.module.css";
+import TextArea from "../../components/TextArea/TextArea";
 
 const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
@@ -21,7 +24,9 @@ const AddPetPage = (): JSX.Element => {
     navigator(Paths.StartPage, { replace: true });
   };
 
-  const onSaveButtonClick = (): void => {};
+  const onSaveButtonClick = (): void => {
+    console.log("Data saved");
+  };
 
   return (
     <motion.div
@@ -56,11 +61,18 @@ const AddPetPage = (): JSX.Element => {
         </ColoredWrapper>
 
         <ColoredWrapper bg="green" className={styles["colored-wrapper"]}>
-          Name
+          <PTag size="lXl">Name</PTag>
+          <Input className={styles.input} type="text" placeholder="Max" />
+        </ColoredWrapper>
+
+        <ColoredWrapper bg="orange" className={styles["colored-wrapper"]}>
+          <PTag size="lXl">Age</PTag>
+          <Input className={styles.input} type="number" min="0" />
         </ColoredWrapper>
 
         <ColoredWrapper bg="blue" className={styles["colored-wrapper"]}>
-          Info
+          <PTag size="lXl">Addition Information</PTag>
+          <TextArea className={styles["text-area"]} />
         </ColoredWrapper>
       </div>
     </motion.div>

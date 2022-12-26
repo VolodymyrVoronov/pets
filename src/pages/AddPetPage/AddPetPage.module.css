@@ -20,9 +20,11 @@
   flex-grow: 1;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   width: 100%;
 
+  padding: 50px 0;
   padding-left: 50px;
 }
 
@@ -53,4 +55,9 @@
 .back-button:hover,
 .save-button:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.input,
+.text-area {
+  margin-top: 15px;
 }

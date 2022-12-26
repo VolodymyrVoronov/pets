@@ -10,7 +10,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 
 import petsIcon03 from "../../assets/images/pets-icon-03.png";
-import homeIcon from "../../assets/icon/home-outline.svg";
+import homeIcon from "../../assets/icons/home-outline.svg";
 
 import styles from "./NoPage.module.css";
 

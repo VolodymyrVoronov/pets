@@ -12,9 +12,9 @@ import Img from "../Img/Img";
 import Button from "../Button/Button";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
-import plusIcon from "../../assets/icon/plus-outline.svg";
-import closeIcon from "../../assets/icon/close-outline.svg";
-import uploadIcon from "../../assets/icon/upload-outline.svg";
+import plusIcon from "../../assets/icons/plus-outline.svg";
+import closeIcon from "../../assets/icons/close-outline.svg";
+import uploadIcon from "../../assets/icons/upload-outline.svg";
 
 import styles from "./ImageUpload.module.css";
 

@@ -8,7 +8,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 
-import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
+import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
 
 import styles from "./PetsPage.module.css";
 
