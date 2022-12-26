@@ -9,6 +9,8 @@ import styles from "./ImageCropper.module.css";
 const ImageCropper = ({ imageToCrop, onImageCropped }: any): JSX.Element => {
   const [cropConfig, setCropConfig] = useState<Crop>({
     unit: "%",
+    y: 25,
+    x: 25,
     width: 50,
     aspect: 1 / 1,
   });

@@ -19,10 +19,12 @@ import uploadIcon from "../../assets/icons/upload-outline.svg";
 import styles from "./ImageUpload.module.css";
 
 interface IImageUploadProps {
+  uploadedImage: string;
   onAvatarUploadChange: (photo: string) => void;
 }
 
 const ImageUpload = ({
+  uploadedImage,
   onAvatarUploadChange,
 }: IImageUploadProps): JSX.Element => {
   const croppedImageRef = useRef() as MutableRefObject<HTMLImageElement>;
@@ -141,7 +143,7 @@ const ImageUpload = ({
           transition={{ duration: 1 }}
         >
           <Img
-            imageUrl={placeholder}
+            imageUrl={uploadedImage || placeholder}
             imageAlt="Photo"
             className={styles.photo}
           />

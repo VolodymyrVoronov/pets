@@ -19,7 +19,7 @@ import styles from "./AddPetPage.module.css";
 import TextArea from "../../components/TextArea/TextArea";
 
 interface IPetState {
-  photo?: string;
+  photo: string;
   name: string;
   age: string;
   info?: string;
@@ -63,6 +63,8 @@ const AddPetPage = (): JSX.Element => {
     });
   }, []);
 
+  console.log(petData);
+
   return (
     <motion.div
       className={styles.wrapper}
@@ -94,7 +96,10 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper-upload-image"]}
         >
-          <ImageUpload onAvatarUploadChange={onAvatarUploadChange} />
+          <ImageUpload
+            uploadedImage={petData.photo}
+            onAvatarUploadChange={onAvatarUploadChange}
+          />
         </ColoredWrapper>
 
         <ColoredWrapper
