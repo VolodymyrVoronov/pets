@@ -37,7 +37,7 @@ const initialPetState = {
 
 const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
-  const { mutate, isError, isLoading } = useMutation(addPet);
+  const { mutate, isLoading, isError, error } = useMutation(addPet);
 
   const [petData, setPetData] = useState<IPetState>(initialPetState || {});
 
