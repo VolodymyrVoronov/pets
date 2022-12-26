@@ -11,8 +11,10 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 import Loader from "../../components/Loader/Loader";
+import PTag from "../../components/PTag/PTag";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
+import errorImage from "../../assets/images/error-image-01.png";
 
 import styles from "./PetsPage.module.css";
 
@@ -23,10 +25,6 @@ const PetsPage = (): JSX.Element => {
   const onBackButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
   };
-
-  // if (isError && error instanceof Error) {
-  //   return <span>Error: {error.message}</span>;
-  // }
 
   console.log(data);
 
@@ -47,13 +45,32 @@ const PetsPage = (): JSX.Element => {
           <Img imageUrl={arrowBackIcon} imageAlt="Arrow back" />
         </Button>
       </NavBar>
-      {isLoading ? (
+
+      {isLoading && (
         <ColoredWrapper bg="blue" className={styles.loader}>
           <Loader />
         </ColoredWrapper>
-      ) : (
+      )}
+
+      {data && (
         <ColoredWrapper bg="blue" className={styles.container}>
           test
+        </ColoredWrapper>
+      )}
+
+      {isError && error instanceof Error && (
+        <ColoredWrapper bg="red" className={styles.error}>
+          <Img
+            className={styles["error-image"]}
+            imageUrl={errorImage}
+            imageAlt="Error."
+          />
+          <PTag className={styles["error-text"]} size="l">
+            Something has gone wrong.
+          </PTag>
+          <PTag className={styles["error-text"]} size="l">
+            {error.message}.
+          </PTag>
         </ColoredWrapper>
       )}
     </motion.div>

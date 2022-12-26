@@ -9,7 +9,7 @@ import Img from "../../components/Img/Img";
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 
-import petsIcon03 from "../../assets/images/pets-icon-03.png";
+import petsIcon03 from "../../assets/images/pet-image-03.png";
 import homeIcon from "../../assets/icons/home-outline.svg";
 
 import styles from "./NoPage.module.css";

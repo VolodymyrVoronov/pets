@@ -8,8 +8,8 @@ import Img from "../../components/Img/Img";
 import HTag from "../../components/HTag/HTag";
 import Button from "../../components/Button/Button";
 
-import petsIcon01 from "../../assets/images/pets-icon-01.png";
-import petsIcon02 from "../../assets/images/pets-icon-02.png";
+import petsIcon01 from "../../assets/images/pet-image-01.png";
+import petsIcon02 from "../../assets/images/pet-image-02.png";
 
 import styles from "./StartPage.module.css";
 

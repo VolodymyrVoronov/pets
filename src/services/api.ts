@@ -28,7 +28,7 @@ const getPets = async (): Promise<IGetPetsResponse | string> => {
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      return error.message;
+      throw new Error(error.message);
     }
 
     return "An unexpected error occurred";
