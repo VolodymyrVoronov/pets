@@ -22,7 +22,6 @@ const ImageCropper = ({ imageToCrop, onImageCropped }: any): JSX.Element => {
     _cropConfig: ReactCrop.Crop,
     fileName: string
   ) {
-    // creating the cropped image from the source image
     const canvas = document.createElement("canvas") as HTMLCanvasElement;
     const scaleX = sourceImage.naturalWidth / sourceImage.width;
     const scaleY = sourceImage.naturalHeight / sourceImage.height;
