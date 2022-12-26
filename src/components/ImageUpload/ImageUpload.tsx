@@ -14,6 +14,7 @@ import Button from "../Button/Button";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
 import plusIcon from "../../assets/icon/plus-outline.svg";
+import closeIcon from "../../assets/icon/close-outline.svg";
 
 import styles from "./ImageUpload.module.css";
 
@@ -55,8 +56,12 @@ const ImageUpload = (): JSX.Element => {
     return b64;
   };
 
-  const onUploadPhotoButtonClick = (): void => {
+  const onUpdatePhotoButtonClick = (): void => {
     setUploadPhoto(true);
+  };
+
+  const onCloseUploadPhotoButtonClick = (): void => {
+    setUploadPhoto(false);
   };
 
   useEffect(() => {
@@ -91,6 +96,14 @@ const ImageUpload = (): JSX.Element => {
               />
             </div>
           </div>
+          <Button
+            onClick={onCloseUploadPhotoButtonClick}
+            type="button"
+            className={styles["preview-btn"]}
+            title="Close upload photo button."
+          >
+            <Img imageUrl={closeIcon} imageAlt="Close icon." />
+          </Button>
         </motion.div>
       ) : (
         <motion.div className={styles["photo-container"]}>
@@ -100,9 +113,10 @@ const ImageUpload = (): JSX.Element => {
             className={styles.photo}
           />
           <Button
-            onClick={onUploadPhotoButtonClick}
+            onClick={onUpdatePhotoButtonClick}
             type="button"
             className={styles["upload-photo-btn"]}
+            title="Update photo button."
           >
             <Img imageUrl={plusIcon} imageAlt="Plus icon." />
           </Button>
