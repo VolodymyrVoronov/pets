@@ -1,3 +1,4 @@
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -17,16 +18,50 @@ import saveIcon from "../../assets/icons/save-outline.svg";
 import styles from "./AddPetPage.module.css";
 import TextArea from "../../components/TextArea/TextArea";
 
+interface IPetState {
+  photo: string;
+  name: string;
+  age: string;
+  info: string;
+}
+
+const initialPetState = {
+  photo: "",
+  name: "",
+  age: "",
+  info: "",
+};
+
 const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
+
+  const [petData, setPetData] = useState<IPetState>(initialPetState || {});
 
   const onBackButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
   };
 
   const onSaveButtonClick = (): void => {
-    console.log("Data saved");
+    console.log(petData);
   };
+
+  const onInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
+    setPetData({
+      ...petData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onAvatarUploadChange = useCallback((photo: string): void => {
+    setPetData((prev) => {
+      return {
+        ...prev,
+        photo,
+      };
+    });
+  }, []);
 
   return (
     <motion.div
@@ -55,24 +90,56 @@ const AddPetPage = (): JSX.Element => {
       <div className={styles.container}>
         <ColoredWrapper
           bg="yellow"
+          isHovering
           className={styles["colored-wrapper-upload-image"]}
         >
-          <ImageUpload />
+          <ImageUpload onAvatarUploadChange={onAvatarUploadChange} />
         </ColoredWrapper>
 
-        <ColoredWrapper bg="green" className={styles["colored-wrapper"]}>
+        <ColoredWrapper
+          bg="green"
+          isHovering
+          className={styles["colored-wrapper"]}
+        >
           <PTag size="lXl">Name</PTag>
-          <Input className={styles.input} type="text" placeholder="Max" />
+          <Input
+            onChange={onInputChange}
+            value={petData.name}
+            className={styles.input}
+            name="name"
+            type="text"
+          />
         </ColoredWrapper>
 
-        <ColoredWrapper bg="orange" className={styles["colored-wrapper"]}>
+        <ColoredWrapper
+          bg="orange"
+          isHovering
+          className={styles["colored-wrapper"]}
+        >
           <PTag size="lXl">Age</PTag>
-          <Input className={styles.input} type="number" min="0" />
+          <Input
+            onChange={onInputChange}
+            value={petData.age}
+            className={styles.input}
+            name="age"
+            type="number"
+            min="0"
+          />
         </ColoredWrapper>
 
-        <ColoredWrapper bg="blue" className={styles["colored-wrapper"]}>
-          <PTag size="lXl">Addition Information</PTag>
-          <TextArea className={styles["text-area"]} />
+        <ColoredWrapper
+          bg="blue"
+          isHovering
+          className={styles["colored-wrapper"]}
+        >
+          <PTag size="lXl">Additional Information</PTag>
+          <TextArea
+            onChange={onInputChange}
+            value={petData.info}
+            className={styles["text-area"]}
+            name="info"
+            rows={10}
+          />
         </ColoredWrapper>
       </div>
     </motion.div>

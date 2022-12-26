@@ -18,7 +18,13 @@ import uploadIcon from "../../assets/icons/upload-outline.svg";
 
 import styles from "./ImageUpload.module.css";
 
-const ImageUpload = (): JSX.Element => {
+interface IImageUploadProps {
+  onAvatarUploadChange: (photo: string) => void;
+}
+
+const ImageUpload = ({
+  onAvatarUploadChange,
+}: IImageUploadProps): JSX.Element => {
   const croppedImageRef = useRef() as MutableRefObject<HTMLImageElement>;
   const [imageToCrop, setImageToCrop] = useState<string | ArrayBuffer | null>(
     null
@@ -67,9 +73,10 @@ const ImageUpload = (): JSX.Element => {
   useEffect(() => {
     if (croppedImageRef.current) {
       const base64 = saveImageAsBase64(croppedImageRef.current.currentSrc);
-      console.log(base64);
+
+      onAvatarUploadChange(base64);
     }
-  }, [croppedImage]);
+  }, [croppedImage, onAvatarUploadChange]);
 
   return (
     <div className={styles.container}>
