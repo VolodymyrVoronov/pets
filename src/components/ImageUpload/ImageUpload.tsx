@@ -8,7 +8,6 @@ import {
 import { motion } from "framer-motion";
 
 import ImageCropper from "../ImageCropper/ImageCropper";
-import PTag from "../PTag/PTag";
 import Img from "../Img/Img";
 import Button from "../Button/Button";
 
