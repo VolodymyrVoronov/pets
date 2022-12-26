@@ -1,11 +1,21 @@
-import { SetStateAction, MutableRefObject, useState, useRef } from "react";
+import {
+  SetStateAction,
+  MutableRefObject,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
+import { motion } from "framer-motion";
 
 import ImageCropper from "../ImageCropper/ImageCropper";
+import PTag from "../PTag/PTag";
+import Img from "../Img/Img";
+import Button from "../Button/Button";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
+import plusIcon from "../../assets/icon/plus-outline.svg";
 
 import styles from "./ImageUpload.module.css";
-import PTag from "../PTag/PTag";
 
 const ImageUpload = (): JSX.Element => {
   const croppedImageRef = useRef() as MutableRefObject<HTMLImageElement>;
@@ -13,6 +23,7 @@ const ImageUpload = (): JSX.Element => {
     null
   );
   const [croppedImage, setCroppedImage] = useState(undefined);
+  const [uploadPhoto, setUploadPhoto] = useState(false);
 
   const onUploadFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -28,10 +39,9 @@ const ImageUpload = (): JSX.Element => {
     }
   };
 
-  const getEmergencyFoundImg = (urlImg: string) => {
+  const saveImageAsBase64 = (urlImg: string) => {
     const img = new Image();
     img.src = urlImg;
-    img.crossOrigin = "Anonymous";
 
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -45,43 +55,59 @@ const ImageUpload = (): JSX.Element => {
     return b64;
   };
 
-  const onSaveButtonClick = (): void => {
-    if (croppedImageRef.current) {
-      const base64 = getEmergencyFoundImg(croppedImageRef.current.currentSrc);
-      console.log(base64);
-
-      console.log(base64.toString().includes("data:,"));
-    }
+  const onUploadPhotoButtonClick = (): void => {
+    setUploadPhoto(true);
   };
 
-  // console.log(croppedImageRef);
+  useEffect(() => {
+    if (croppedImageRef.current) {
+      const base64 = saveImageAsBase64(croppedImageRef.current.currentSrc);
+      console.log(base64);
+    }
+  }, [croppedImage]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <input type="file" accept="image/*" onChange={onUploadFile} />
-        <PTag size="l">Preview</PTag>
-        <button type="button" onClick={onSaveButtonClick}>
-          Save Image
-        </button>
-      </div>
-      <div className={styles.images}>
-        <ImageCropper
-          imageToCrop={imageToCrop}
-          onImageCropped={(_croppedImage: SetStateAction<undefined>) =>
-            setCroppedImage(_croppedImage)
-          }
-        />
+      {uploadPhoto ? (
+        <motion.div>
+          <div className={styles["preview-header"]}>
+            <input type="file" accept="image/*" onChange={onUploadFile} />
+            <PTag size="l">Preview</PTag>
+          </div>
+          <div className={styles["preview-upload"]}>
+            <ImageCropper
+              imageToCrop={imageToCrop}
+              onImageCropped={(_croppedImage: SetStateAction<undefined>) =>
+                setCroppedImage(_croppedImage)
+              }
+            />
 
-        <div className={styles["preview-container"]}>
-          <img
-            ref={croppedImageRef}
-            alt="Cropped Img"
-            src={croppedImage || placeholder}
-            className={styles["preview-image"]}
+            <div className={styles["preview-container"]}>
+              <Img
+                ref={croppedImageRef}
+                imageAlt="Cropped Img"
+                imageUrl={croppedImage || placeholder}
+                className={styles["preview-image"]}
+              />
+            </div>
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div className={styles["photo-container"]}>
+          <Img
+            imageUrl={placeholder}
+            imageAlt="Photo"
+            className={styles.photo}
           />
-        </div>
-      </div>
+          <Button
+            onClick={onUploadPhotoButtonClick}
+            type="button"
+            className={styles["upload-photo-btn"]}
+          >
+            <Img imageUrl={plusIcon} imageAlt="Plus icon." />
+          </Button>
+        </motion.div>
+      )}
     </div>
   );
 };
