@@ -6,7 +6,7 @@ import Paths from "../../constants";
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
-import Image from "../../components/Image/Image";
+import Img from "../../components/Img/Img";
 
 import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
 
@@ -33,7 +33,7 @@ const PetsPage = (): JSX.Element => {
           className={styles["back-button"]}
           title="Back to start page."
         >
-          <Image imageUrl={arrowBackIcon} imageAlt="Arrow back" />
+          <Img imageUrl={arrowBackIcon} imageAlt="Arrow back" />
         </Button>
       </NavBar>
       <ColoredWrapper bg="blue" className={styles.container}>

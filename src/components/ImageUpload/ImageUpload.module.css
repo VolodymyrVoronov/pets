@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+
+  padding: 50px;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.photo {
+  position: relative;
+  display: flex;
+
+  width: 25%;
+}
+
+.upload-photo-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 25%;
+  height: 50px;
+
+  margin-top: 25px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  border: none;
+
+  transition: all 500ms ease;
+}
+
+.upload-photo-btn img {
+  width: inherit;
+  height: inherit;
+}
+
+.upload-photo-btn:hover {
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.preview-upload-btn-wrapper {
+  position: relative;
+  display: inline-block;
+
+  width: 100%;
+
+  margin-bottom: 25px;
+
+  overflow: hidden;
+}
+
+.preview-upload-btn-wrapper input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 50px;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+.preview-upload-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  border: none;
+
+  transition: all 500ms ease;
+}
+
+.preview-upload-btn img {
+  width: inherit;
+  height: inherit;
+}
+
+.preview-upload-btn-wrapper input[type="file"]:hover ~ .preview-upload-btn {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.preview-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.preview-upload {
+  display: flex;
+  flex-direction: row;
+}
+
+.preview-container {
+  display: block;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  margin-left: 50px;
+}
+
+.preview-image {
+  display: flex;
+
+  width: 100%;
+}
+
+.preview-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  margin-top: 25px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  border: none;
+
+  transition: all 500ms ease;
+}
+
+.preview-btn img {
+  width: inherit;
+  height: inherit;
+}
+
+.preview-btn:hover {
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 0, 0.1);
+}

@@ -6,7 +6,8 @@ import Paths from "../../constants";
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
-import Image from "../../components/Image/Image";
+import Img from "../../components/Img/Img";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
 
 import arrowBackIcon from "../../assets/icon/arrow-back-outline.svg";
 import saveIcon from "../../assets/icon/save-outline.svg";
@@ -36,19 +37,22 @@ const AddPetPage = (): JSX.Element => {
           className={styles["back-button"]}
           title="Back to start page."
         >
-          <Image imageUrl={arrowBackIcon} imageAlt="Arrow back icon" />
+          <Img imageUrl={arrowBackIcon} imageAlt="Arrow back icon" />
         </Button>
         <Button
           onClick={onSaveButtonClick}
           className={styles["save-button"]}
           title="Save pet's data."
         >
-          <Image imageUrl={saveIcon} imageAlt="Save icon" />
+          <Img imageUrl={saveIcon} imageAlt="Save icon" />
         </Button>
       </NavBar>
       <div className={styles.container}>
-        <ColoredWrapper bg="yellow" className={styles["colored-wrapper"]}>
-          Foto
+        <ColoredWrapper
+          bg="yellow"
+          className={styles["colored-wrapper-upload-image"]}
+        >
+          <ImageUpload />
         </ColoredWrapper>
 
         <ColoredWrapper bg="green" className={styles["colored-wrapper"]}>

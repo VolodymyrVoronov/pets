@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
-import Image from "../../components/Image/Image";
+import Img from "../../components/Img/Img";
 import HTag from "../../components/HTag/HTag";
 import Button from "../../components/Button/Button";
 
@@ -38,7 +38,7 @@ const StartPage = (): JSX.Element => {
           isHovering
           className={styles["left-side-wrapper"]}
         >
-          <Image
+          <Img
             imageUrl={petsIcon01}
             imageAlt="Pets in house."
             className={styles["left-side-image"]}
@@ -55,7 +55,7 @@ const StartPage = (): JSX.Element => {
           isHovering
           className={styles["right-side-wrapper"]}
         >
-          <Image
+          <Img
             imageUrl={petsIcon02}
             imageAlt="Pets' list."
             className={styles["right-side-image"]}

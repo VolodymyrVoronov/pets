@@ -5,7 +5,7 @@ import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import HTag from "../../components/HTag/HTag";
-import Image from "../../components/Image/Image";
+import Img from "../../components/Img/Img";
 import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 
@@ -35,11 +35,11 @@ const NoPage = (): JSX.Element => {
           className={styles["back-button"]}
           title="Back to start page."
         >
-          <Image imageUrl={homeIcon} imageAlt="Arrow back" />
+          <Img imageUrl={homeIcon} imageAlt="Arrow back" />
         </Button>
       </NavBar>
       <ColoredWrapper bg="red" className={styles.container}>
-        <Image
+        <Img
           imageUrl={petsIcon03}
           imageAlt="Icon: magnifying glass with paw inside."
           className={styles.image}

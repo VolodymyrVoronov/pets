@@ -25,6 +25,15 @@
   padding-left: 50px;
 }
 
+.colored-wrapper-upload-image {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+
+  padding-left: 50px;
+}
+
 .back-button,
 .save-button {
   display: inline-block;
