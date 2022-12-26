@@ -19,10 +19,10 @@ import styles from "./AddPetPage.module.css";
 import TextArea from "../../components/TextArea/TextArea";
 
 interface IPetState {
-  photo: string;
+  photo?: string;
   name: string;
   age: string;
-  info: string;
+  info?: string;
 }
 
 const initialPetState = {
@@ -83,6 +83,7 @@ const AddPetPage = (): JSX.Element => {
           onClick={onSaveButtonClick}
           className={styles["save-button"]}
           title="Save pet's data."
+          disabled={petData.name === "" || petData.age === ""}
         >
           <Img imageUrl={saveIcon} imageAlt="Save icon" />
         </Button>
@@ -101,7 +102,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper"]}
         >
-          <PTag size="lXl">Name</PTag>
+          <PTag size="lXl">Name *</PTag>
           <Input
             onChange={onInputChange}
             value={petData.name}
@@ -116,7 +117,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper"]}
         >
-          <PTag size="lXl">Age</PTag>
+          <PTag size="lXl">Age *</PTag>
           <Input
             onChange={onInputChange}
             value={petData.age}
@@ -140,6 +141,14 @@ const AddPetPage = (): JSX.Element => {
             name="info"
             rows={10}
           />
+        </ColoredWrapper>
+
+        <ColoredWrapper
+          bg="red"
+          isHovering
+          className={styles["colored-wrapper"]}
+        >
+          <PTag size="lXl">* Fields are required!</PTag>
         </ColoredWrapper>
       </div>
     </motion.div>

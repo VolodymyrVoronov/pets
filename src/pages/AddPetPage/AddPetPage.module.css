@@ -57,6 +57,11 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.save-button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
 .input,
 .text-area {
   margin-top: 15px;
