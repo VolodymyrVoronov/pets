@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import ReactCrop, { Crop } from "react-image-crop";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
@@ -86,4 +86,4 @@ const ImageCropper = ({ imageToCrop, onImageCropped }: any): JSX.Element => {
   );
 };
 
-export default memo(ImageCropper);
+export default ImageCropper;

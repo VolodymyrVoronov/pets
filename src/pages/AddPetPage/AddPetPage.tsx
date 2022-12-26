@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useMutation } from "react-query";
+
+import { addPet } from "../../services/api";
 
 import Paths from "../../constants";
 
@@ -34,6 +37,7 @@ const initialPetState = {
 
 const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
+  const { mutate, isError, isLoading } = useMutation(addPet);
 
   const [petData, setPetData] = useState<IPetState>(initialPetState || {});
 
@@ -42,7 +46,7 @@ const AddPetPage = (): JSX.Element => {
   };
 
   const onSaveButtonClick = (): void => {
-    console.log(petData);
+    mutate(petData);
   };
 
   const onInputChange = (

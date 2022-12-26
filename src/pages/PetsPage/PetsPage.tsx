@@ -1,5 +1,8 @@
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
+import { getPets } from "../../services/api";
 
 import Paths from "../../constants";
 
@@ -18,6 +21,20 @@ const PetsPage = (): JSX.Element => {
   const onBackButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
   };
+
+  const { isLoading, isError, data, error } = useQuery("pets", getPets);
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    if (error instanceof Error) {
+      return <span>Error: {error.message}</span>;
+    }
+  }
+
+  console.log(data);
 
   return (
     <motion.div
