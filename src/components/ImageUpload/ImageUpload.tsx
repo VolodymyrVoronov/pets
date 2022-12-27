@@ -12,7 +12,6 @@ import Img from "../Img/Img";
 import Button from "../Button/Button";
 import PTag from "../PTag/PTag";
 
-import placeholder from "../../assets/images/placeholder.jpeg";
 import uploadIcon from "../../assets/icons/upload-outline.svg";
 
 import styles from "./ImageUpload.module.css";

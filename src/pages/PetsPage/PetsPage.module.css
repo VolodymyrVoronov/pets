@@ -17,6 +17,9 @@
 }
 
 .card {
+  position: relative;
+  z-index: 11;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -25,6 +28,8 @@
   padding: 25px 5px;
 
   background-color: rgba(0, 0, 0, 0.1);
+
+  transition: all 500ms ease;
 }
 
 @media screen and (min-width: 768px) {
@@ -51,11 +56,44 @@
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.card:focus {
+  outline: 2px solid var(--black);
+}
+
 .card-photo {
   width: 250px;
   height: 250px;
 
   background-size: cover;
+}
+
+.card-deleted-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 111;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition: all 500ms ease;
+}
+
+.card-deleted-button img {
+  width: 25px;
+}
+
+.card-deleted-button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (min-width: 576px) {

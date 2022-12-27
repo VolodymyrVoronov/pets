@@ -1,3 +1,4 @@
+import { KeyboardEvent, MouseEvent } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -15,6 +16,7 @@ import PTag from "../../components/PTag/PTag";
 import Card from "../../components/Card/Card";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
+import deleteIcon from "../../assets/icons/trash-outline.svg";
 import errorImage from "../../assets/images/error-image-01.png";
 import placeholder from "../../assets/images/placeholder.jpeg";
 
@@ -30,7 +32,28 @@ const PetsPage = (): JSX.Element => {
   };
 
   const onCardClick = (id: number): void => {
-    console.log(id);
+    console.log(id, "Click");
+  };
+
+  const onFocusedCardKeyPress = (
+    e: KeyboardEvent<HTMLDivElement>,
+    id: number
+  ): void => {
+    const t = e.target as HTMLDivElement;
+
+    if (e.key === "Enter" && t.nodeName === "DIV") {
+      console.log(id, "Enter");
+    }
+  };
+
+  const onCardDeleteButtonClick = (
+    e: MouseEvent<HTMLButtonElement>,
+    id: number
+  ): void => {
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+
+    console.log(id, "Deleted");
   };
 
   return (
@@ -64,7 +87,9 @@ const PetsPage = (): JSX.Element => {
               <Card
                 key={id}
                 onClick={() => onCardClick(id)}
+                onKeyDown={(e) => onFocusedCardKeyPress(e, id)}
                 className={styles.card}
+                tabIndex={0}
               >
                 <div
                   className={styles["card-photo"]}
@@ -83,6 +108,14 @@ const PetsPage = (): JSX.Element => {
                     {info}
                   </PTag>
                 )}
+
+                <Button
+                  onClick={(e) => onCardDeleteButtonClick(e, id)}
+                  className={styles["card-deleted-button"]}
+                  title="Delete this card."
+                >
+                  <Img imageUrl={deleteIcon} imageAlt="Delete" />
+                </Button>
               </Card>
             );
           })}
