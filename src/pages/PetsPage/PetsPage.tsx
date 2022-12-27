@@ -71,10 +71,10 @@ const PetsPage = (): JSX.Element => {
                   title={name}
                   style={{ backgroundImage: `url(${photo || placeholder})` }}
                 />
-                <HTag tag="h3" className={styles["card-name"]}>
+                <HTag tag="h4" className={styles["card-name"]}>
                   Name: {name}
                 </HTag>
-                <HTag tag="h4" className={styles["card-age"]}>
+                <HTag tag="h5" className={styles["card-age"]}>
                   Age: {age}
                 </HTag>
 
