@@ -56,6 +56,8 @@ const ImageUpload = ({
 
     const b64 = canvas.toDataURL("image/png");
 
+    if (b64.includes("data:,")) return "";
+
     return b64;
   };
 

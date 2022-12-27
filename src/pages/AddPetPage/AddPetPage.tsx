@@ -67,8 +67,6 @@ const AddPetPage = (): JSX.Element => {
     });
   }, []);
 
-  console.log(petData);
-
   return (
     <motion.div
       className={styles.wrapper}

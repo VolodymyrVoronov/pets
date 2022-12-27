@@ -8,10 +8,6 @@ export interface IPet {
   info: string;
 }
 
-interface IGetPetsResponse {
-  data: IPet[];
-}
-
 interface IAddPet {
   name: string;
   age: string;
@@ -21,9 +17,9 @@ interface IAddPet {
 
 const url = "http://localhost:3000";
 
-const getPets = async (): Promise<IGetPetsResponse | string> => {
+const getPets = async (): Promise<IPet[]> => {
   try {
-    const { data } = await axios.get<IGetPetsResponse>(`${url}/pets`);
+    const { data } = await axios.get<IPet[]>(`${url}/pets`);
 
     return data;
   } catch (error) {
@@ -31,7 +27,7 @@ const getPets = async (): Promise<IGetPetsResponse | string> => {
       throw new Error(error.message);
     }
 
-    return "An unexpected error occurred";
+    throw new Error("An unexpected error occurred");
   }
 };
 

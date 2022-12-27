@@ -12,11 +12,14 @@ import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 import Loader from "../../components/Loader/Loader";
 import PTag from "../../components/PTag/PTag";
+import Card from "../../components/Card/Card";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
 import errorImage from "../../assets/images/error-image-01.png";
+import placeholder from "../../assets/images/placeholder.jpeg";
 
 import styles from "./PetsPage.module.css";
+import HTag from "../../components/HTag/HTag";
 
 const PetsPage = (): JSX.Element => {
   const navigator = useNavigate();
@@ -26,7 +29,9 @@ const PetsPage = (): JSX.Element => {
     navigator(Paths.StartPage, { replace: true });
   };
 
-  console.log(data);
+  const onCardClick = (id: number): void => {
+    console.log(id);
+  };
 
   return (
     <motion.div
@@ -54,7 +59,33 @@ const PetsPage = (): JSX.Element => {
 
       {data && (
         <ColoredWrapper bg="blue" className={styles.container}>
-          test
+          {data.map(({ id, age, name, info, photo }) => {
+            return (
+              <Card
+                key={id}
+                onClick={() => onCardClick(id)}
+                className={styles.card}
+              >
+                <div
+                  className={styles["card-photo"]}
+                  title={name}
+                  style={{ backgroundImage: `url(${photo || placeholder})` }}
+                />
+                <HTag tag="h3" className={styles["card-name"]}>
+                  Name: {name}
+                </HTag>
+                <HTag tag="h4" className={styles["card-age"]}>
+                  Age: {age}
+                </HTag>
+
+                {info && (
+                  <PTag size="l" className={styles["card-info"]}>
+                    {info}
+                  </PTag>
+                )}
+              </Card>
+            );
+          })}
         </ColoredWrapper>
       )}
 

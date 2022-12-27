@@ -20,6 +20,13 @@
       "age": "7",
       "info": "Cat cat cat.",
       "id": 3
+    },
+    {
+      "photo": "",
+      "name": "Vladislav",
+      "age": "3",
+      "info": "",
+      "id": 4
     }
   ]
 }
