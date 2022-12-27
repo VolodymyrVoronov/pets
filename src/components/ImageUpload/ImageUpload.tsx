@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import ImageCropper from "../ImageCropper/ImageCropper";
 import Img from "../Img/Img";
 import Button from "../Button/Button";
+import PTag from "../PTag/PTag";
 
 import placeholder from "../../assets/images/placeholder.jpeg";
 import uploadIcon from "../../assets/icons/upload-outline.svg";
@@ -78,12 +79,13 @@ const ImageUpload = ({
         transition={{ duration: 1 }}
       >
         <div className={styles["preview-header"]}>
+          <PTag size="lXl">Photo upload:</PTag>
           <div className={styles["preview-upload-btn-wrapper"]}>
             <input
               type="file"
               accept="image/*"
               onChange={onUploadFile}
-              title="Upload file."
+              title="Upload photo or image."
             />
             <Button
               type="button"
@@ -94,23 +96,36 @@ const ImageUpload = ({
             </Button>
           </div>
         </div>
-        <div className={styles["preview-upload"]}>
-          <ImageCropper
-            imageToCrop={imageToCrop}
-            onImageCropped={(_croppedImage: SetStateAction<undefined>) =>
-              setCroppedImage(_croppedImage)
-            }
-          />
 
-          <div className={styles["preview-container"]}>
-            <Img
-              ref={croppedImageRef}
-              imageAlt="Cropped Img"
-              imageUrl={croppedImage || placeholder}
-              className={styles["preview-image"]}
+        {imageToCrop && (
+          <div className={styles["preview-upload"]}>
+            <ImageCropper
+              imageToCrop={imageToCrop}
+              onImageCropped={(_croppedImage: SetStateAction<undefined>) =>
+                setCroppedImage(_croppedImage)
+              }
             />
+
+            {croppedImage ? (
+              <div className={styles["preview-container"]}>
+                <Img
+                  ref={croppedImageRef}
+                  imageAlt="Cropped Img"
+                  imageUrl={croppedImage}
+                  className={styles["preview-image"]}
+                />
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  minHeight: "25vh",
+                  border: "1px dotted black",
+                }}
+              />
+            )}
           </div>
-        </div>
+        )}
       </motion.div>
     </div>
   );
