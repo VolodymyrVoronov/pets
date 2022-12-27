@@ -65,6 +65,13 @@
   }
 }
 
+@media screen and (min-width: 1920px) {
+  .card-photo {
+    width: 450px;
+    height: 450px;
+  }
+}
+
 .card-name {
   margin-top: 15px;
 }
