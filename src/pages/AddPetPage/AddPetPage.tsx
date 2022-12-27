@@ -58,7 +58,7 @@ const AddPetPage = (): JSX.Element => {
     });
   };
 
-  const onAvatarUploadChange = useCallback((photo: string): void => {
+  const onPhotoUploadChange = useCallback((photo: string): void => {
     setPetData((prev) => {
       return {
         ...prev,
@@ -100,10 +100,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper-upload-image"]}
         >
-          <ImageUpload
-            uploadedImage={petData.photo}
-            onAvatarUploadChange={onAvatarUploadChange}
-          />
+          <ImageUpload onPhotoUploadChange={onPhotoUploadChange} />
         </ColoredWrapper>
 
         <ColoredWrapper
