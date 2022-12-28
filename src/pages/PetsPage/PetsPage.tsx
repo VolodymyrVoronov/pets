@@ -13,6 +13,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 import Loader from "../../components/Loader/Loader";
+import HTag from "../../components/HTag/HTag";
 import PTag from "../../components/PTag/PTag";
 import Card from "../../components/Card/Card";
 
@@ -22,7 +23,6 @@ import errorImage from "../../assets/images/error-image-01.png";
 import placeholder from "../../assets/images/placeholder.jpeg";
 
 import styles from "./PetsPage.module.css";
-import HTag from "../../components/HTag/HTag";
 
 const PetsPage = (): JSX.Element => {
   const navigator = useNavigate();
