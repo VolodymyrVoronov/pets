@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useMutation } from "react-query";
@@ -14,12 +14,13 @@ import Img from "../../components/Img/Img";
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import PTag from "../../components/PTag/PTag";
 import Input from "../../components/Input/Input";
+import Loader from "../../components/Loader/Loader";
+import TextArea from "../../components/TextArea/TextArea";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
 import saveIcon from "../../assets/icons/save-outline.svg";
 
 import styles from "./AddPetPage.module.css";
-import TextArea from "../../components/TextArea/TextArea";
 
 interface IPetState {
   photo: string;
@@ -37,7 +38,7 @@ const initialPetState = {
 
 const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
-  const { mutate, data, isLoading, isError, error } = useMutation(addPet);
+  const { mutate, isLoading, isSuccess, isError, error } = useMutation(addPet);
 
   const [petData, setPetData] = useState<IPetState>(initialPetState || {});
 
@@ -67,7 +68,15 @@ const AddPetPage = (): JSX.Element => {
     });
   }, []);
 
-  console.log(data, isLoading, isError, error);
+  useEffect(() => {
+    if (isSuccess) {
+      const timeoutId = setTimeout(() => {
+        navigator(Paths.PetsPage, { replace: true });
+
+        clearTimeout(timeoutId);
+      }, 500);
+    }
+  }, [isSuccess, navigator]);
 
   return (
     <motion.div
@@ -89,12 +98,28 @@ const AddPetPage = (): JSX.Element => {
           onClick={onSaveButtonClick}
           className={styles["save-button"]}
           title="Save pet's data."
-          disabled={petData.name === "" || petData.age === ""}
+          disabled={petData.name === "" || petData.age === "" || isLoading}
         >
-          <Img imageUrl={saveIcon} imageAlt="Save icon" />
+          {isLoading ? (
+            <div className={styles["save-button-loader"]}>
+              <Loader type="circle-arrow" />
+            </div>
+          ) : (
+            <Img imageUrl={saveIcon} imageAlt="Save icon" />
+          )}
         </Button>
       </NavBar>
+
       <div className={styles.container}>
+        {isError && error instanceof Error && (
+          <ColoredWrapper bg="red" className={styles["uploading-error"]}>
+            <PTag size="l">
+              Uploading failed: <br />
+              {error.message}
+            </PTag>
+          </ColoredWrapper>
+        )}
+
         <ColoredWrapper
           bg="yellow"
           isHovering

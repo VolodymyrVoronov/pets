@@ -52,6 +52,12 @@
   transition: all 500ms ease;
 }
 
+.save-button-loader {
+  margin-right: 15px;
+
+  transform: scale(0.6);
+}
+
 .back-button:hover,
 .save-button:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -65,4 +71,15 @@
 .input,
 .text-area {
   margin-top: 15px;
+}
+
+.uploading-error {
+  position: absolute;
+  z-index: 222;
+
+  width: 100%;
+
+  padding: 10px 0;
+
+  text-align: center;
 }
