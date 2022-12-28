@@ -35,7 +35,7 @@ const getPet = async (id: number): Promise<IPet> => {
   try {
     const { data } = await axios.get(`${url}/pets/${id}`);
 
-    return data as IPet;
+    return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message);
@@ -63,7 +63,7 @@ const deletePet = async (id: number): Promise<IPet> => {
   try {
     const { data } = await axios.delete(`${url}/pets/${id}`);
 
-    return data as IPet;
+    return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message);

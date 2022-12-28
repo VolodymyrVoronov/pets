@@ -23,16 +23,16 @@ import saveIcon from "../../assets/icons/save-outline.svg";
 import styles from "./AddPetPage.module.css";
 
 interface IPetState {
-  photo: string;
   name: string;
   age: string;
+  photo?: string;
   info?: string;
 }
 
 const initialPetState = {
-  photo: "",
   name: "",
   age: "",
+  photo: "",
   info: "",
 };
 
