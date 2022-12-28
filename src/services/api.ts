@@ -31,6 +31,20 @@ const getPets = async (): Promise<IPet[]> => {
   }
 };
 
+const getPet = async (id: number): Promise<IPet> => {
+  try {
+    const { data } = await axios.get(`${url}/pets/${id}`);
+
+    return data as IPet;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    }
+
+    throw new Error("An unexpected error occurred");
+  }
+};
+
 const addPet = async (newPet: IAddPet): Promise<IPet> => {
   try {
     const { data } = await axios.post<IAddPet>(`${url}/pets`, newPet);
@@ -59,4 +73,4 @@ const deletePet = async (id: number): Promise<IPet> => {
   }
 };
 
-export { getPets, addPet, deletePet };
+export { getPets, getPet, addPet, deletePet };
