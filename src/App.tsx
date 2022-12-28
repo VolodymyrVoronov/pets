@@ -8,6 +8,7 @@ import StartPage from "./pages/StartPage/StartPage";
 import NoPage from "./pages/NoPage/NoPage";
 import PetsPage from "./pages/PetsPage/PetsPage";
 import AddPetPage from "./pages/AddPetPage/AddPetPage";
+import PetPageInfo from "./pages/PetPageInfo/PetPageInfo";
 
 const App = (): JSX.Element => {
   const location = useLocation();
@@ -18,7 +19,7 @@ const App = (): JSX.Element => {
         <Route path={Paths.Root} element={<Navigate to={Paths.StartPage} />} />
         <Route path={Paths.StartPage} element={<StartPage />} />
         <Route path={Paths.PetsPage} element={<PetsPage />} />
-        <Route path={Paths.PetPageInfo} element={<div>PetPageInfo</div>} />
+        <Route path={Paths.PetPageInfo} element={<PetPageInfo />} />
         <Route path={Paths.AddPetPage} element={<AddPetPage />} />
         <Route path={Paths.NoPage} element={<NoPage />} />
       </Routes>

@@ -5,13 +5,13 @@ import Card from "../Card/Card";
 import HTag from "../HTag/HTag";
 import PTag from "../PTag/PTag";
 import Loader from "../Loader/Loader";
+import Img from "../Img/Img";
+import Button from "../Button/Button";
 
 import deleteIcon from "../../assets/icons/trash-outline.svg";
 import placeholder from "../../assets/images/placeholder.jpeg";
 
 import styles from "./PetCard.module.css";
-import Button from "../Button/Button";
-import Img from "../Img/Img";
 
 interface IPetCardProps {
   id: number;

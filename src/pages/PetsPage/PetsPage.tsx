@@ -46,7 +46,7 @@ const PetsPage = (): JSX.Element => {
   };
 
   const onCardClick = (id: number): void => {
-    console.log(id, "Click");
+    navigator(Paths.PetPageInfo, { state: id });
   };
 
   const onFocusedCardKeyPress = (
@@ -56,7 +56,7 @@ const PetsPage = (): JSX.Element => {
     const t = e.target as HTMLDivElement;
 
     if (e.key === "Enter" && t.nodeName === "DIV") {
-      console.log(id, "Enter");
+      navigator(Paths.PetPageInfo, { state: id });
     }
   };
 
