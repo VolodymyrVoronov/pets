@@ -33,7 +33,7 @@
 }
 
 .card-error {
-  box-shadow: 0 4px 2px -2px red;
+  box-shadow: inset 0px -2px 0px 0px red;
 }
 
 .card-deleting-error {
