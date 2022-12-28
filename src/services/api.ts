@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import getErrorMessage from "../helpers";
+
 export interface IPet {
   id: number;
   name: string;
@@ -23,11 +25,7 @@ const getPets = async (): Promise<IPet[]> => {
 
     return data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-
-    throw new Error("An unexpected error occurred");
+    throw new Error(getErrorMessage(error));
   }
 };
 
@@ -37,11 +35,7 @@ const getPet = async (id: number): Promise<IPet> => {
 
     return data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-
-    throw new Error("An unexpected error occurred");
+    throw new Error(getErrorMessage(error));
   }
 };
 
@@ -51,11 +45,7 @@ const addPet = async (newPet: IAddPet): Promise<IPet> => {
 
     return data as IPet;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-
-    throw new Error("An unexpected error occurred");
+    throw new Error(getErrorMessage(error));
   }
 };
 
@@ -65,11 +55,7 @@ const deletePet = async (id: number): Promise<IPet> => {
 
     return data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-
-    throw new Error("An unexpected error occurred");
+    throw new Error(getErrorMessage(error));
   }
 };
 
