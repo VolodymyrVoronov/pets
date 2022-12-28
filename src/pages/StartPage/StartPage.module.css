@@ -62,6 +62,12 @@
   transition: all 500ms ease;
 }
 
+@media screen and (orientation: landscape) {
+  .wrapper {
+    flex-direction: row;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .wrapper {
     flex-direction: row;
