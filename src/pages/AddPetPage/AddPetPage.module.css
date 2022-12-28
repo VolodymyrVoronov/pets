@@ -73,7 +73,8 @@
   margin-top: 15px;
 }
 
-.uploading-error {
+.uploading-error,
+.uploading-succeeded {
   position: absolute;
   z-index: 222;
 
@@ -82,4 +83,6 @@
   padding: 10px 0;
 
   text-align: center;
+
+  border-bottom: 2px solid grey;
 }

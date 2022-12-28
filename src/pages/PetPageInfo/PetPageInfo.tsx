@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
@@ -25,7 +26,7 @@ const PetPageInfo = (): JSX.Element => {
   const navigator = useNavigate();
   const location = useLocation();
 
-  const { data, isLoading, isError, error } = useQuery(
+  const { data, isLoading, isError, error, remove } = useQuery(
     ["getPets", getPet],
     () => getPet(location.state)
   );
@@ -37,6 +38,12 @@ const PetPageInfo = (): JSX.Element => {
   const onHomeButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
   };
+
+  useEffect(() => {
+    return () => {
+      remove();
+    };
+  }, [remove]);
 
   return (
     <motion.div

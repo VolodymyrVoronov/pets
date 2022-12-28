@@ -74,7 +74,7 @@ const AddPetPage = (): JSX.Element => {
         navigator(Paths.PetsPage, { replace: true });
 
         clearTimeout(timeoutId);
-      }, 500);
+      }, 1500);
     }
   }, [isSuccess, navigator]);
 
@@ -116,6 +116,15 @@ const AddPetPage = (): JSX.Element => {
             <PTag size="l">
               Uploading failed: <br />
               {error.message}
+            </PTag>
+          </ColoredWrapper>
+        )}
+
+        {isSuccess && (
+          <ColoredWrapper bg="green" className={styles["uploading-succeeded"]}>
+            <PTag size="l">
+              Uploading succeeded. <br />
+              Redirecting to pets page...
             </PTag>
           </ColoredWrapper>
         )}
