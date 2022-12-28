@@ -86,7 +86,8 @@
   }
 }
 
-.back-button {
+.back-button,
+.home-button {
   display: inline-block;
 
   width: 50px;
@@ -100,7 +101,8 @@
   transition: all 500ms ease;
 }
 
-.back-button:hover {
+.back-button:hover,
+.home-button:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 

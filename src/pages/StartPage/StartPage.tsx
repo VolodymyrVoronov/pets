@@ -40,7 +40,7 @@ const StartPage = (): JSX.Element => {
         >
           <Img
             imageUrl={petsIcon01}
-            imageAlt="Pets in house."
+            imageAlt="Pets in house icon/image."
             className={styles["left-side-image"]}
           />
           <HTag tag="h2" className={styles["left-side-text"]}>
@@ -57,7 +57,7 @@ const StartPage = (): JSX.Element => {
         >
           <Img
             imageUrl={petsIcon02}
-            imageAlt="Pets' list."
+            imageAlt="Pets' list icon/image."
             className={styles["right-side-image"]}
           />
           <HTag tag="h2" className={styles["right-side-text"]}>

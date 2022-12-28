@@ -109,7 +109,7 @@ const ImageUpload = ({
               <div className={styles["preview-container"]}>
                 <Img
                   ref={croppedImageRef}
-                  imageAlt="Cropped Img"
+                  imageAlt="Cropped image."
                   imageUrl={croppedImage}
                   className={styles["preview-image"]}
                 />

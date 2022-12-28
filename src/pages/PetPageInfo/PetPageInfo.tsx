@@ -1,5 +1,5 @@
-import { useQuery } from "react-query";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useQuery } from "react-query";
 import { motion } from "framer-motion";
 
 import { getPet } from "../../services/api";
@@ -15,6 +15,7 @@ import PTag from "../../components/PTag/PTag";
 import Loader from "../../components/Loader/Loader";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
+import homeIcon from "../../assets/icons/home-outline.svg";
 import errorImage from "../../assets/images/error-image-01.png";
 import placeholder from "../../assets/images/placeholder.jpeg";
 
@@ -33,6 +34,10 @@ const PetPageInfo = (): JSX.Element => {
     navigator(Paths.PetsPage, { replace: true });
   };
 
+  const onHomeButtonClick = (): void => {
+    navigator(Paths.StartPage, { replace: true });
+  };
+
   return (
     <motion.div
       className={styles.wrapper}
@@ -45,11 +50,19 @@ const PetPageInfo = (): JSX.Element => {
         <Button
           onClick={onBackButtonClick}
           className={styles["back-button"]}
+          title="Back to pets page."
+        >
+          <Img imageUrl={arrowBackIcon} imageAlt="Arrow back icon." />
+        </Button>
+        <Button
+          onClick={onHomeButtonClick}
+          className={styles["home-button"]}
           title="Back to start page."
         >
-          <Img imageUrl={arrowBackIcon} imageAlt="Arrow back" />
+          <Img imageUrl={homeIcon} imageAlt="Home icon." />
         </Button>
       </NavBar>
+
       {isLoading && (
         <ColoredWrapper bg="blue" className={styles.loader}>
           <Loader />
@@ -83,7 +96,7 @@ const PetPageInfo = (): JSX.Element => {
           <Img
             className={styles["error-image"]}
             imageUrl={errorImage}
-            imageAlt="Error."
+            imageAlt="Error icon/image."
           />
           <PTag className={styles["error-text"]} size="l">
             Something has gone wrong.

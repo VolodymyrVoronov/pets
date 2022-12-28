@@ -94,7 +94,7 @@ const PetsPage = (): JSX.Element => {
           className={styles["back-button"]}
           title="Back to start page."
         >
-          <Img imageUrl={arrowBackIcon} imageAlt="Arrow back" />
+          <Img imageUrl={arrowBackIcon} imageAlt="Arrow back icon." />
         </Button>
       </NavBar>
 
@@ -134,7 +134,7 @@ const PetsPage = (): JSX.Element => {
           <Img
             className={styles["error-image"]}
             imageUrl={errorImage}
-            imageAlt="Error."
+            imageAlt="Error icon/image."
           />
           <PTag className={styles["error-text"]} size="l">
             Something has gone wrong.

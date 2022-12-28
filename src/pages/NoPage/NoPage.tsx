@@ -35,7 +35,7 @@ const NoPage = (): JSX.Element => {
           className={styles["back-button"]}
           title="Back to start page."
         >
-          <Img imageUrl={homeIcon} imageAlt="Arrow back" />
+          <Img imageUrl={homeIcon} imageAlt="Arrow back icon." />
         </Button>
       </NavBar>
       <ColoredWrapper bg="red" className={styles.container}>
