@@ -165,8 +165,20 @@
 }
 
 .card-info {
+  position: relative;
+  display: -webkit-box;
+
+  max-width: 400px;
+
   margin-top: 20px;
   padding: 0 10px;
+
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  -webkit-mask-image: linear-gradient(180deg, var(--black) 60%, transparent);
 }
 
 .back-button {
