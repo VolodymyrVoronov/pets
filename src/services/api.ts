@@ -47,7 +47,7 @@ const addPet = async (newPet: IAddPet): Promise<IPet | string> => {
 
 const deletePet = async (id: number): Promise<IPet | string> => {
   try {
-    const { data } = await axios.delete(`${url}/petsx/${id}`);
+    const { data } = await axios.delete(`${url}/pets/${id}`);
 
     return data as IPet;
   } catch (error) {
