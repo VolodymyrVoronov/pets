@@ -2,7 +2,6 @@ import { KeyboardEvent, MouseEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import cn from "classnames";
 
 import { getPets, deletePet } from "../../services/api";
 
@@ -10,17 +9,14 @@ import Paths from "../../constants";
 
 import ColoredWrapper from "../../components/ColoredWrapper/ColoredWrapper";
 import NavBar from "../../components/NavBar/NavBar";
+import PetCard from "../../components/PetCard/PetCard";
 import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 import Loader from "../../components/Loader/Loader";
-import HTag from "../../components/HTag/HTag";
 import PTag from "../../components/PTag/PTag";
-import Card from "../../components/Card/Card";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
-import deleteIcon from "../../assets/icons/trash-outline.svg";
 import errorImage from "../../assets/images/error-image-01.png";
-import placeholder from "../../assets/images/placeholder.jpeg";
 
 import styles from "./PetsPage.module.css";
 
@@ -74,6 +70,10 @@ const PetsPage = (): JSX.Element => {
     mutate(id);
   };
 
+  const setActiveCardHandler = (id: number): void => {
+    setActiveCard(id);
+  };
+
   useEffect(() => {
     if (isSuccessMutation) {
       refetch();
@@ -108,60 +108,22 @@ const PetsPage = (): JSX.Element => {
         <ColoredWrapper bg="blue" className={styles.container}>
           {data.map(({ id, age, name, info, photo }) => {
             return (
-              <Card
+              <PetCard
                 key={id}
-                onClick={() => onCardClick(id)}
-                onKeyDown={(e) => onFocusedCardKeyPress(e, id)}
-                className={cn(styles.card, {
-                  [styles["card-error"]]: isErrorMutation && activeCard === id,
-                })}
-                tabIndex={0}
-              >
-                <div
-                  className={styles["card-photo"]}
-                  title={name}
-                  style={{ backgroundImage: `url(${photo || placeholder})` }}
-                />
-                <HTag tag="h4" className={styles["card-name"]}>
-                  Name: {name}
-                </HTag>
-                <HTag tag="h5" className={styles["card-age"]}>
-                  Age: {age}
-                </HTag>
-
-                {info && (
-                  <PTag size="l" className={styles["card-info"]}>
-                    {info}
-                  </PTag>
-                )}
-
-                {isLoadingMutation && activeCard === id ? (
-                  <div className={styles["card-delete-button-icon"]}>
-                    <Loader type="circle-arrow" />
-                  </div>
-                ) : (
-                  <Button
-                    onClick={(e) => {
-                      onCardDeleteButtonClick(e, id);
-                      setActiveCard(id);
-                    }}
-                    className={styles["card-delete-button"]}
-                    title="Delete this card."
-                    disabled={isLoadingMutation}
-                  >
-                    <Img imageUrl={deleteIcon} imageAlt="Delete" />
-                  </Button>
-                )}
-
-                {isErrorMutation &&
-                  mutationError instanceof Error &&
-                  activeCard === id && (
-                    <PTag size="s" className={styles["card-deleting-error"]}>
-                      Something has gone wrong: <br />
-                      {mutationError.message}
-                    </PTag>
-                  )}
-              </Card>
+                id={id}
+                age={age}
+                name={name}
+                info={info}
+                photo={photo}
+                isErrorMutation={isErrorMutation}
+                isLoadingMutation={isLoadingMutation}
+                activeCard={activeCard}
+                mutationError={mutationError}
+                onCardClick={onCardClick}
+                onFocusedCardKeyPress={onFocusedCardKeyPress}
+                onCardDeleteButtonClick={onCardDeleteButtonClick}
+                setActiveCardHandler={setActiveCardHandler}
+              />
             );
           })}
         </ColoredWrapper>
