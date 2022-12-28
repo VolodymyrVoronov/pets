@@ -14,6 +14,7 @@ import Img from "../../components/Img/Img";
 import HTag from "../../components/HTag/HTag";
 import PTag from "../../components/PTag/PTag";
 import Loader from "../../components/Loader/Loader";
+import Card from "../../components/Card/Card";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
 import homeIcon from "../../assets/icons/home-outline.svg";
@@ -78,23 +79,25 @@ const PetPageInfo = (): JSX.Element => {
 
       {data && (
         <ColoredWrapper bg="blue" className={styles.container}>
-          <div
-            className={styles["card-photo"]}
-            title={data.name}
-            style={{ backgroundImage: `url(${data.photo || placeholder})` }}
-          />
-          <HTag tag="h4" className={styles["card-name"]}>
-            Name: {data.name}
-          </HTag>
-          <HTag tag="h5" className={styles["card-age"]}>
-            Age: {data.age}
-          </HTag>
+          <Card className={styles.card}>
+            <div
+              className={styles["card-photo"]}
+              title={data.name}
+              style={{ backgroundImage: `url(${data.photo || placeholder})` }}
+            />
+            <HTag tag="h4" className={styles["card-name"]}>
+              Name: {data.name}
+            </HTag>
+            <HTag tag="h5" className={styles["card-age"]}>
+              Age: {data.age}
+            </HTag>
 
-          {data.info && (
-            <PTag size="l" className={styles["card-info"]}>
-              {data.info}
-            </PTag>
-          )}
+            {data.info && (
+              <PTag size="l" className={styles["card-info"]}>
+                {data.info}
+              </PTag>
+            )}
+          </Card>
         </ColoredWrapper>
       )}
 
