@@ -67,7 +67,7 @@
   background-size: cover;
 }
 
-.card-deleted-button {
+.card-delete-button {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -88,12 +88,37 @@
   transition: all 500ms ease;
 }
 
-.card-deleted-button img {
+.card-delete-button img {
   width: 25px;
 }
 
-.card-deleted-button:hover {
+.card-delete-button:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.card-delete-button:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.card-delete-button:disabled:hover {
+  background-color: transparent;
+}
+
+.card-delete-button-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 111;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 50px;
+
+  transform: scale(0.5);
 }
 
 @media screen and (min-width: 576px) {

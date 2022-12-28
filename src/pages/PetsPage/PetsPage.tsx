@@ -1,9 +1,9 @@
-import { KeyboardEvent, MouseEvent } from "react";
-import { useQuery } from "react-query";
+import { KeyboardEvent, MouseEvent, useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { getPets } from "../../services/api";
+import { getPets, deletePet } from "../../services/api";
 
 import Paths from "../../constants";
 
@@ -25,7 +25,24 @@ import HTag from "../../components/HTag/HTag";
 
 const PetsPage = (): JSX.Element => {
   const navigator = useNavigate();
-  const { data, isLoading, isError, error } = useQuery("getPets", getPets);
+
+  const {
+    data,
+    isLoading: isLoadingQuery,
+    isError: isErrorQuery,
+    error: queryError,
+    refetch,
+  } = useQuery("getPets", getPets);
+
+  const {
+    mutate,
+    isSuccess: isSuccessMutation,
+    isLoading: isLoadingMutation,
+    isError: isErrorMutation,
+    error: mutationError,
+  } = useMutation("deletePet", deletePet);
+
+  const [activeCard, setActiveCard] = useState<number>();
 
   const onBackButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
@@ -53,8 +70,14 @@ const PetsPage = (): JSX.Element => {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
 
-    console.log(id, "Deleted");
+    mutate(id);
   };
+
+  useEffect(() => {
+    if (isSuccessMutation) {
+      refetch();
+    }
+  }, [isSuccessMutation, refetch]);
 
   return (
     <motion.div
@@ -74,7 +97,7 @@ const PetsPage = (): JSX.Element => {
         </Button>
       </NavBar>
 
-      {isLoading && (
+      {isLoadingQuery && (
         <ColoredWrapper bg="blue" className={styles.loader}>
           <Loader />
         </ColoredWrapper>
@@ -109,20 +132,30 @@ const PetsPage = (): JSX.Element => {
                   </PTag>
                 )}
 
-                <Button
-                  onClick={(e) => onCardDeleteButtonClick(e, id)}
-                  className={styles["card-deleted-button"]}
-                  title="Delete this card."
-                >
-                  <Img imageUrl={deleteIcon} imageAlt="Delete" />
-                </Button>
+                {isLoadingMutation && activeCard === id ? (
+                  <div className={styles["card-delete-button-icon"]}>
+                    <Loader type="circle-arrow" />
+                  </div>
+                ) : (
+                  <Button
+                    onClick={(e) => {
+                      onCardDeleteButtonClick(e, id);
+                      setActiveCard(id);
+                    }}
+                    className={styles["card-delete-button"]}
+                    title="Delete this card."
+                    disabled={isLoadingMutation}
+                  >
+                    <Img imageUrl={deleteIcon} imageAlt="Delete" />
+                  </Button>
+                )}
               </Card>
             );
           })}
         </ColoredWrapper>
       )}
 
-      {isError && error instanceof Error && (
+      {isErrorQuery && queryError instanceof Error && (
         <ColoredWrapper bg="red" className={styles.error}>
           <Img
             className={styles["error-image"]}
@@ -133,7 +166,7 @@ const PetsPage = (): JSX.Element => {
             Something has gone wrong.
           </PTag>
           <PTag className={styles["error-text"]} size="l">
-            {error.message}.
+            {queryError.message}.
           </PTag>
         </ColoredWrapper>
       )}

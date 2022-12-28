@@ -38,11 +38,25 @@ const addPet = async (newPet: IAddPet): Promise<IPet | string> => {
     return data as IPet;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      return error.message;
+      throw new Error(error.message);
     }
 
-    return "An unexpected error occurred";
+    throw new Error("An unexpected error occurred");
   }
 };
 
-export { getPets, addPet };
+const deletePet = async (id: number): Promise<IPet | string> => {
+  try {
+    const { data } = await axios.delete(`${url}/pets/${id}`);
+
+    return data as IPet;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    }
+
+    throw new Error("An unexpected error occurred");
+  }
+};
+
+export { getPets, addPet, deletePet };

@@ -37,7 +37,7 @@ const initialPetState = {
 
 const AddPetPage = (): JSX.Element => {
   const navigator = useNavigate();
-  const { mutate, isLoading, isError, error } = useMutation(addPet);
+  const { mutate, data, isLoading, isError, error } = useMutation(addPet);
 
   const [petData, setPetData] = useState<IPetState>(initialPetState || {});
 
@@ -66,6 +66,8 @@ const AddPetPage = (): JSX.Element => {
       };
     });
   }, []);
+
+  console.log(data, isLoading, isError, error);
 
   return (
     <motion.div
