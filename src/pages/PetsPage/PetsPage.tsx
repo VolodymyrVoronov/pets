@@ -2,6 +2,7 @@ import { KeyboardEvent, MouseEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import cn from "classnames";
 
 import { getPets, deletePet } from "../../services/api";
 
@@ -111,7 +112,9 @@ const PetsPage = (): JSX.Element => {
                 key={id}
                 onClick={() => onCardClick(id)}
                 onKeyDown={(e) => onFocusedCardKeyPress(e, id)}
-                className={styles.card}
+                className={cn(styles.card, {
+                  [styles["card-error"]]: isErrorMutation && activeCard === id,
+                })}
                 tabIndex={0}
               >
                 <div
@@ -149,6 +152,15 @@ const PetsPage = (): JSX.Element => {
                     <Img imageUrl={deleteIcon} imageAlt="Delete" />
                   </Button>
                 )}
+
+                {isErrorMutation &&
+                  mutationError instanceof Error &&
+                  activeCard === id && (
+                    <PTag size="s" className={styles["card-deleting-error"]}>
+                      Something has gone wrong: <br />
+                      {mutationError.message}
+                    </PTag>
+                  )}
               </Card>
             );
           })}
