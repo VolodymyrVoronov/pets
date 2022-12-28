@@ -13,10 +13,12 @@ import PetCard from "../../components/PetCard/PetCard";
 import Button from "../../components/Button/Button";
 import Img from "../../components/Img/Img";
 import Loader from "../../components/Loader/Loader";
+import HTag from "../../components/HTag/HTag";
 import PTag from "../../components/PTag/PTag";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
 import errorImage from "../../assets/images/error-image-01.png";
+import bookImage from "../../assets/images/book-image-01.png";
 
 import styles from "./PetsPage.module.css";
 
@@ -104,7 +106,7 @@ const PetsPage = (): JSX.Element => {
         </ColoredWrapper>
       )}
 
-      {data && (
+      {data && data.length ? (
         <ColoredWrapper bg="blue" className={styles.container}>
           {data.map(({ id, age, name, info, photo }) => {
             return (
@@ -126,6 +128,17 @@ const PetsPage = (): JSX.Element => {
               />
             );
           })}
+        </ColoredWrapper>
+      ) : (
+        <ColoredWrapper bg="blue" className={styles["container-no-pets"]}>
+          <Img
+            className={styles["container-no-pets-image"]}
+            imageUrl={bookImage}
+            imageAlt="Book icon/image."
+          />
+          <HTag tag="h3" className={styles["container-no-pets-text"]}>
+            No pets found
+          </HTag>
         </ColoredWrapper>
       )}
 
