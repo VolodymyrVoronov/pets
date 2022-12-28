@@ -31,7 +31,7 @@ const getPets = async (): Promise<IPet[]> => {
   }
 };
 
-const addPet = async (newPet: IAddPet): Promise<IPet | string> => {
+const addPet = async (newPet: IAddPet): Promise<IPet> => {
   try {
     const { data } = await axios.post<IAddPet>(`${url}/pets`, newPet);
 
@@ -45,7 +45,7 @@ const addPet = async (newPet: IAddPet): Promise<IPet | string> => {
   }
 };
 
-const deletePet = async (id: number): Promise<IPet | string> => {
+const deletePet = async (id: number): Promise<IPet> => {
   try {
     const { data } = await axios.delete(`${url}/pets/${id}`);
 
