@@ -31,7 +31,6 @@ interface IPetCardProps {
     e: MouseEvent<HTMLButtonElement>,
     id: number
   ) => void;
-  setActiveCardHandler: (id: number) => void;
 }
 
 const PetCard = ({
@@ -49,7 +48,6 @@ const PetCard = ({
   onCardClick,
   onFocusedCardKeyPress,
   onCardDeleteButtonClick,
-  setActiveCardHandler,
 }: IPetCardProps): JSX.Element => {
   return (
     <Card
@@ -87,7 +85,6 @@ const PetCard = ({
         <Button
           onClick={(e) => {
             onCardDeleteButtonClick(e, id);
-            setActiveCardHandler(id);
           }}
           className={styles["card-delete-button"]}
           title="Delete this card."

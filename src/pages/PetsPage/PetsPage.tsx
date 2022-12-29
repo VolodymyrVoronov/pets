@@ -2,6 +2,7 @@ import { KeyboardEvent, MouseEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useKeyPress } from "react-use";
 
 import { getPets, deletePet } from "../../services/api";
 
@@ -15,6 +16,7 @@ import Img from "../../components/Img/Img";
 import Loader from "../../components/Loader/Loader";
 import HTag from "../../components/HTag/HTag";
 import PTag from "../../components/PTag/PTag";
+import Popup from "../../components/Popup/Popup";
 
 import arrowBackIcon from "../../assets/icons/arrow-back-outline.svg";
 import errorImage from "../../assets/images/error-image-01.png";
@@ -42,6 +44,8 @@ const PetsPage = (): JSX.Element => {
   } = useMutation("deletePet", deletePet);
 
   const [activeCard, setActiveCard] = useState<number>();
+  const [showPopup, setShowPopup] = useState(false);
+  const isEscPressed = useKeyPress("Escape");
 
   const onBackButtonClick = (): void => {
     navigator(Paths.StartPage, { replace: true });
@@ -69,18 +73,32 @@ const PetsPage = (): JSX.Element => {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
 
-    mutate(id);
+    setActiveCard(id);
+    setShowPopup(true);
   };
 
-  const setActiveCardHandler = (id: number): void => {
-    setActiveCard(id);
+  const onClosePopupClick = (): void => {
+    setShowPopup(false);
+  };
+
+  const onConfirmButtonClick = (): void => {
+    if (activeCard) {
+      mutate(activeCard);
+    }
   };
 
   useEffect(() => {
     if (isSuccessMutation) {
       refetch();
+      setShowPopup(false);
     }
   }, [isSuccessMutation, refetch]);
+
+  useEffect(() => {
+    if (isEscPressed) {
+      setShowPopup(false);
+    }
+  }, [isEscPressed]);
 
   return (
     <motion.div
@@ -99,6 +117,28 @@ const PetsPage = (): JSX.Element => {
           <Img imageUrl={arrowBackIcon} imageAlt="Arrow back icon." />
         </Button>
       </NavBar>
+
+      {showPopup && (
+        <Popup
+          className={styles.popup}
+          title="Do you really want to delete this card?"
+          subtitle="There isn't any option to restore it after deleting!"
+          onClose={onClosePopupClick}
+        >
+          <Button
+            onClick={onConfirmButtonClick}
+            className={styles["popup-confirm-button"]}
+          >
+            <HTag tag="h6">Delete</HTag>
+          </Button>
+          <Button
+            onClick={onClosePopupClick}
+            className={styles["popup-close-button"]}
+          >
+            <HTag tag="h6">Close</HTag>
+          </Button>
+        </Popup>
+      )}
 
       {isLoadingQuery && (
         <ColoredWrapper bg="blue" className={styles.loader}>
@@ -124,7 +164,6 @@ const PetsPage = (): JSX.Element => {
                 onCardClick={onCardClick}
                 onFocusedCardKeyPress={onFocusedCardKeyPress}
                 onCardDeleteButtonClick={onCardDeleteButtonClick}
-                setActiveCardHandler={setActiveCardHandler}
               />
             );
           })}

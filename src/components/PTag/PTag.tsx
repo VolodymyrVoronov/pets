@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import styles from "./PTag.module.css";
 
-interface IPTagProps
+export interface IPTagProps
   extends DetailedHTMLProps<
     HTMLAttributes<HTMLParagraphElement>,
     HTMLParagraphElement

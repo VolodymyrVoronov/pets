@@ -98,3 +98,37 @@
 .error-text {
   margin-top: 25px !important;
 }
+
+.popup div {
+  padding-bottom: 0;
+}
+
+.popup-confirm-button,
+.popup-close-button {
+  display: inline-block;
+
+  width: 50%;
+  height: 50px;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: all 500ms ease;
+}
+
+.popup-confirm-button {
+  background-color: var(--red);
+}
+
+.popup-confirm-button:hover {
+  background-color: var(--red-dark);
+}
+
+.popup-close-button {
+  background-color: var(--green);
+}
+
+.popup-close-button:hover {
+  background-color: var(--green-dark);
+}

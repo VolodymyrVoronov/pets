@@ -3,12 +3,12 @@ import cn from "classnames";
 
 import styles from "./HTag.module.css";
 
-interface IHTagProps
+export interface IHTagProps
   extends DetailedHTMLProps<
     HTMLAttributes<HTMLHeadingElement>,
     HTMLParagraphElement
   > {
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5";
+  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children: ReactNode;
 }
 
