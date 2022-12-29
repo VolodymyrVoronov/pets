@@ -92,7 +92,11 @@ const PetsPage = (): JSX.Element => {
       refetch();
       setShowPopup(false);
     }
-  }, [isSuccessMutation, refetch]);
+
+    if (isErrorMutation) {
+      setShowPopup(false);
+    }
+  }, [isSuccessMutation, isErrorMutation, refetch]);
 
   useEffect(() => {
     if (isEscPressed) {
