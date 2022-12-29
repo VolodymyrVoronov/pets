@@ -17,11 +17,11 @@ const StartPage = (): JSX.Element => {
   const navigator = useNavigate();
 
   const onLeftSideClick = (): void => {
-    navigator(Paths.PetsPage, { replace: true });
+    navigator(Paths.PetsPage);
   };
 
   const onRightSideClick = (): void => {
-    navigator(Paths.AddPetPage, { replace: true });
+    navigator(Paths.AddPetPage);
   };
 
   return (
