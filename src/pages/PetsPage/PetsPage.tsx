@@ -132,12 +132,14 @@ const PetsPage = (): JSX.Element => {
           <Button
             onClick={onConfirmButtonClick}
             className={styles["popup-confirm-button"]}
+            title="Confirm deletion of the card."
           >
             <HTag tag="h6">Delete</HTag>
           </Button>
           <Button
             onClick={onClosePopupClick}
             className={styles["popup-close-button"]}
+            title="Cancel deletion."
           >
             <HTag tag="h6">Close</HTag>
           </Button>
