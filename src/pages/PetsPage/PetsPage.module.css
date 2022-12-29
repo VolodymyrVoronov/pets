@@ -101,6 +101,8 @@
 
 .popup div {
   padding-bottom: 0;
+
+  font-family: "Montserrat", sans-serif;
 }
 
 .popup-confirm-button,

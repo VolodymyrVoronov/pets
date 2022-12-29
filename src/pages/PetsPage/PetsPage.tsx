@@ -1,7 +1,7 @@
 import { KeyboardEvent, MouseEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useKeyPress } from "react-use";
 
 import { getPets, deletePet } from "../../services/api";
@@ -122,29 +122,31 @@ const PetsPage = (): JSX.Element => {
         </Button>
       </NavBar>
 
-      {showPopup && (
-        <Popup
-          className={styles.popup}
-          title="Do you really want to delete this card?"
-          subtitle="There isn't any option to restore it after deleting!"
-          onClose={onClosePopupClick}
-        >
-          <Button
-            onClick={onConfirmButtonClick}
-            className={styles["popup-confirm-button"]}
-            title="Confirm deletion of the card."
+      <AnimatePresence mode="wait">
+        {showPopup && (
+          <Popup
+            className={styles.popup}
+            title="Do you really want to delete this card?"
+            subtitle="There isn't any option to restore it after deleting!"
+            onClose={onClosePopupClick}
           >
-            <HTag tag="h6">Delete</HTag>
-          </Button>
-          <Button
-            onClick={onClosePopupClick}
-            className={styles["popup-close-button"]}
-            title="Cancel deletion."
-          >
-            <HTag tag="h6">Close</HTag>
-          </Button>
-        </Popup>
-      )}
+            <Button
+              onClick={onConfirmButtonClick}
+              className={styles["popup-confirm-button"]}
+              title="Confirm deletion of the card."
+            >
+              <HTag tag="h6">Delete</HTag>
+            </Button>
+            <Button
+              onClick={onClosePopupClick}
+              className={styles["popup-close-button"]}
+              title="Cancel deletion of the card."
+            >
+              <HTag tag="h6">Close</HTag>
+            </Button>
+          </Popup>
+        )}
+      </AnimatePresence>
 
       {isLoadingQuery && (
         <ColoredWrapper bg="blue" className={styles.loader}>
