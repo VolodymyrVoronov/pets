@@ -142,7 +142,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper"]}
         >
-          <PTag size="lXl">Name *</PTag>
+          <PTag size="xl">Name *</PTag>
           <Input
             onChange={onInputChange}
             value={petData.name}
@@ -157,7 +157,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper"]}
         >
-          <PTag size="lXl">Age *</PTag>
+          <PTag size="xl">Age *</PTag>
           <Input
             onChange={onInputChange}
             value={petData.age}
@@ -173,7 +173,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper"]}
         >
-          <PTag size="lXl">Additional Information</PTag>
+          <PTag size="xl">Additional Information</PTag>
           <TextArea
             onChange={onInputChange}
             value={petData.info}
@@ -188,7 +188,7 @@ const AddPetPage = (): JSX.Element => {
           isHovering
           className={styles["colored-wrapper"]}
         >
-          <PTag size="lXl">* Fields are required!</PTag>
+          <PTag size="xl">* Fields are required!</PTag>
         </ColoredWrapper>
       </div>
     </motion.div>

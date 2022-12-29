@@ -8,7 +8,7 @@ export interface IPTagProps
     HTMLAttributes<HTMLParagraphElement>,
     HTMLParagraphElement
   > {
-  size?: "s" | "m" | "l" | "lXl";
+  size?: "s" | "m" | "l" | "xl";
   children: ReactNode;
 }
 
@@ -24,7 +24,7 @@ const PTag = ({
         [styles.small]: size === "s",
         [styles.medium]: size === "m",
         [styles.large]: size === "l",
-        [styles.largeXl]: size === "lXl",
+        [styles.largeXl]: size === "xl",
       })}
       {...props}
     >

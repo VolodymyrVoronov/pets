@@ -78,7 +78,7 @@ const ImageUpload = ({
         transition={{ duration: 1 }}
       >
         <div className={styles["preview-header"]}>
-          <PTag size="lXl">Photo upload:</PTag>
+          <PTag size="xl">Photo upload:</PTag>
           <div className={styles["preview-upload-btn-wrapper"]}>
             <input
               type="file"
