@@ -21,7 +21,7 @@
   position: relative;
   z-index: 555;
 
-  width: 500px;
+  width: 320px;
 
   text-align: center;
 
@@ -31,7 +31,7 @@
 }
 
 .header {
-  padding: 35px 50px;
+  padding: 15px 25px;
 }
 
 .close {
@@ -70,4 +70,20 @@
 
 .children {
   margin-top: 25px;
+}
+
+@media screen and (min-width: 425px) {
+  .body {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .body {
+    width: 500px;
+  }
+
+  .header {
+    padding: 35px 50px;
+  }
 }
