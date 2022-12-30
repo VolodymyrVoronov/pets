@@ -86,4 +86,6 @@ const ImageCropper = ({ imageToCrop, onImageCropped }: any): JSX.Element => {
   );
 };
 
+ImageCropper.displayName = "ImageCropper";
+
 export default ImageCropper;
