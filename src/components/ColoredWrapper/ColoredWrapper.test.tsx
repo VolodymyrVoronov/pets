@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 import ColoredWrapper from "./ColoredWrapper";
 
 describe("ColoredWrapper", () => {
-  it("renders correctly", () => {
+  it("renders correctly.", () => {
     const { container } = render(
       <ColoredWrapper bg="orange">Test text</ColoredWrapper>
     );
