@@ -1,4 +1,5 @@
-import { render } from "@testing-library/react";
+import { render, fireEvent, act, screen } from "@testing-library/react";
+import { vi } from "vitest";
 
 import PetCard from "./PetCard";
 
@@ -169,5 +170,35 @@ describe("PetCard", () => {
     const errorText = container.innerHTML.includes("Something has gone wrong:");
 
     expect(errorText).toBe(true);
+  });
+
+  it("on card click", () => {
+    const onCardClick = vi.fn();
+    const onKeyDown = vi.fn();
+    const onCardDeleteButtonClick = vi.fn();
+
+    const { container, getByRole } = render(
+      <PetCard
+        isErrorMutation={false}
+        isLoadingMutation={false}
+        activeCard={1}
+        mutationError={undefined}
+        onCardClick={onCardClick}
+        onFocusedCardKeyPress={onKeyDown}
+        onCardDeleteButtonClick={onCardDeleteButtonClick}
+        {...testPet}
+      />
+    );
+
+    const el = container.querySelector("div") as HTMLElement;
+
+    fireEvent.click(el);
+    expect(onCardClick).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(el);
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+    fireEvent.click(getByRole("button"));
+    expect(onCardDeleteButtonClick).toHaveBeenCalledTimes(1);
   });
 });
