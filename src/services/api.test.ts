@@ -4,6 +4,8 @@ import { getPets, getPet, addPet, deletePet } from "./api";
 
 import placeholder from "../../assets/images/placeholder.png";
 
+const url = "http://localhost:3000";
+
 const testMockData = [
   {
     id: 1,
@@ -23,7 +25,7 @@ const testMockData = [
 
 describe("api", () => {
   it("should receive pets.", async () => {
-    nock("http://localhost:3000").get("/pets").reply(200, {
+    nock(url).get("/pets").reply(200, {
       testMockData,
     });
 
@@ -33,7 +35,7 @@ describe("api", () => {
   });
 
   it("should receive pet with id 1.", async () => {
-    nock("http://localhost:3000")
+    nock(url)
       .get(`/pets/1`)
       .reply(200, () => {
         const data = testMockData.filter((p) => p.id === 1);
@@ -55,7 +57,7 @@ describe("api", () => {
   });
 
   it("should add new pet.", async () => {
-    nock("http://localhost:3000")
+    nock(url)
       .post(`/pets`)
       .reply(200, () => {
         return {
@@ -84,7 +86,7 @@ describe("api", () => {
   });
 
   it("should add delete pet.", async () => {
-    nock("http://localhost:3000")
+    nock(url)
       .delete(`/pets/2`)
       .reply(200, () => {
         const data = testMockData.filter((p) => p.id === 2);
