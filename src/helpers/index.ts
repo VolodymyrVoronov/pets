@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getErrorMessage = (error: Error | unknown): string => {
+const getErrorMessage = (error: Error | unknown): never => {
   if (axios.isAxiosError(error)) {
     throw new Error(error.message);
   }
