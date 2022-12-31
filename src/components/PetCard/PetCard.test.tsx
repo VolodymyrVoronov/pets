@@ -1,4 +1,4 @@
-import { render, fireEvent, act, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 
 import PetCard from "./PetCard";
