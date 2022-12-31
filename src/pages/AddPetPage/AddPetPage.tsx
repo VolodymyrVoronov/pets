@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useMutation } from "react-query";
+import cn from "classnames";
 
 import { addPet } from "../../services/api";
 
@@ -78,6 +79,8 @@ const AddPetPage = (): JSX.Element => {
     }
   }, [isSuccess, navigator]);
 
+  const areNameAndAgeEmpty = petData.name === "" || petData.age === "";
+
   return (
     <motion.div
       className={styles.wrapper}
@@ -96,9 +99,11 @@ const AddPetPage = (): JSX.Element => {
         </Button>
         <Button
           onClick={onSaveButtonClick}
-          className={styles["save-button"]}
+          className={cn(styles["save-button"], {
+            [styles["save-button-animate"]]: !areNameAndAgeEmpty,
+          })}
           title="Save pet's data."
-          disabled={petData.name === "" || petData.age === "" || isLoading}
+          disabled={areNameAndAgeEmpty || isLoading}
         >
           {isLoading ? (
             <div className={styles["save-button-loader"]}>

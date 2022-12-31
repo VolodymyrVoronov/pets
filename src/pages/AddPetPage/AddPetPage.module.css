@@ -52,6 +52,26 @@
   transition: all 500ms ease;
 }
 
+.save-button-animate {
+  animation-duration: 500ms;
+  animation-name: zoom;
+}
+
+@keyframes zoom {
+  from {
+    width: 50px;
+  }
+
+  75% {
+    width: 75px;
+    background-color: var(--white);
+  }
+
+  to {
+    width: 50px;
+  }
+}
+
 .save-button-loader {
   margin-right: 15px;
 
