@@ -56,6 +56,7 @@ describe("NoPage", () => {
         </div>
       </div>
     `);
+
     expect(getByText("Page not found")).toBeInTheDocument();
   });
 
