@@ -94,6 +94,7 @@ const AddPetPage = (): JSX.Element => {
           onClick={onBackButtonClick}
           className={styles["back-button"]}
           title="Back to start page."
+          data-testid="back-button"
         >
           <Img imageUrl={arrowBackIcon} imageAlt="Arrow back icon" />
         </Button>
@@ -104,6 +105,7 @@ const AddPetPage = (): JSX.Element => {
           })}
           title="Save pet's data."
           disabled={areNameAndAgeEmpty || isLoading}
+          data-testid="save-button"
         >
           {isLoading ? (
             <div className={styles["save-button-loader"]}>
