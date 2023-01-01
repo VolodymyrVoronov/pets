@@ -150,11 +150,11 @@ const PetsPage = (): JSX.Element => {
 
       {isLoadingQuery && (
         <ColoredWrapper bg="blue" className={styles.loader}>
-          <Loader />
+          <Loader type="circle-arrow" />
         </ColoredWrapper>
       )}
 
-      {data && data.length ? (
+      {data && data.length && (
         <ColoredWrapper bg="blue" className={styles.container}>
           {data.map(({ id, age, name, info, photo }) => {
             return (
@@ -176,7 +176,9 @@ const PetsPage = (): JSX.Element => {
             );
           })}
         </ColoredWrapper>
-      ) : (
+      )}
+
+      {!isLoadingQuery && data && data.length === 0 && (
         <ColoredWrapper bg="blue" className={styles["container-no-pets"]}>
           <Img
             className={styles["container-no-pets-image"]}

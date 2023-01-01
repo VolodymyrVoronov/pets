@@ -109,7 +109,7 @@ const AddPetPage = (): JSX.Element => {
         >
           {isLoading ? (
             <div className={styles["save-button-loader"]}>
-              <Loader type="circle-arrow" />
+              <Loader />
             </div>
           ) : (
             <Img imageUrl={saveIcon} imageAlt="Save icon" />

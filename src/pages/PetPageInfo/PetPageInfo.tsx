@@ -73,7 +73,7 @@ const PetPageInfo = (): JSX.Element => {
 
       {isLoading && (
         <ColoredWrapper bg="blue" className={styles.loader}>
-          <Loader />
+          <Loader type="circle-arrow" />
         </ColoredWrapper>
       )}
 
